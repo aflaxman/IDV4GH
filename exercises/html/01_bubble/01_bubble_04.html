@@ -27,7 +27,14 @@ var margin = {top: 10, right: 10,
     height = 500 - margin.top
             - margin.bottom;
 
-// scales
+var svg = d3.select("body").append("svg")
+    .attr("width", width
+          + margin.left + margin.right)
+    .attr("height", height
+          + margin.top + margin.bottom);
+    
+var year = 2000;
+
 var xScale = d3.scale.log()
                .domain([300, 1e5])
                .range([0, width]),
@@ -39,19 +46,13 @@ var xScale = d3.scale.log()
                     .range([0, 40]),
     colorScale = d3.scale.category10();
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width
-          + margin.left + margin.right)
-    .attr("height", height
-          + margin.top + margin.bottom);
-    
-var year = 2000;
 var dot = svg.selectAll(".dot")
     .data(nations)
     .enter()
     .append("circle")
     .attr("class", "dot")
-    .style("fill", function(d) { return colorScale(d.region); })
+    .style("fill", function(d) {
+      return colorScale(d.region); })
     .call(position);
     
 function position(dot) {

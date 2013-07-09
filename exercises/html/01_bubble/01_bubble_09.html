@@ -115,12 +115,12 @@ var label = svg.append("text")
     .text(year);
 
 d3.select('body').call(d3.keybinding()
-    .on('←', change_year(-5))
-    .on('→', change_year(5)));
+    .on('←', change_year(-1))
+    .on('→', change_year(1)));
 
 function change_year(delta) {
     return function(event) {        
-        year = Math.max(1990, Math.min(2005, year+delta));
+        year = Math.max(1970, Math.min(2008, year+delta));
         dot.transition().call(position);
         label.text(year);
     };
