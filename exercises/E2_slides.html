@@ -1198,11 +1198,14 @@ div.output_prompt {
 <h2>Hello, World of Statistical Graphics</h2>
 <p>Based on <a href="http://stats.stackexchange.com/questions/46897/is-there-a-hello-world-for-statistical-graphics">this Stack Exchange Thread</a></p>
 </div>
-<div style=display:none class="text_cell_render border-box-sizing rendered_html">
+<aside class="notes">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>In computer programming, there is a classic first program for learning/teaching a new language or system, called <a href="http://en.wikipedia.org/wiki/Hello_world_program">"hello, world"</a>.</p>
 <p>For example, in IPython it might look like this:</p>
 </div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
+</aside>
+<aside class="notes">
+<div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="input_area box-flex1">
@@ -1223,9 +1226,12 @@ div.output_prompt {
 </div>
 </div>
 </div>
-<div style=display:none class="text_cell_render border-box-sizing rendered_html">
+</aside>
+<aside class="notes">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>This notebook will guide the student through the creation of the "hello, world" of statistical graphics using d3js.</p>
 </div>
+</aside>
 </section>
 <section>
 <div class="cell border-box-sizing code_cell vbox">
@@ -2519,7 +2525,7 @@ svg.append("g")
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">02</span><span class="n">_hello_world</span><span class="o">/</span><span class="mo">02</span><span class="n">_hello_06</span><span class="o">.</span><span class="n">html</span>
 
@@ -2588,6 +2594,17 @@ svg.append("g")
         <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="p">;</span> <span class="p">})])</span>
     <span class="o">.</span><span class="n">range</span><span class="p">([</span><span class="n">height</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">]);</span>
 
+<span class="o">//</span> <span class="n">Create</span> <span class="n">line</span>
+<span class="n">var</span> <span class="n">line</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">line</span><span class="p">()</span>
+<span class="err">    </span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">xScale</span><span class="p">(</span><span class="n">i</span><span class="p">);</span> <span class="p">})</span>
+<span class="err">    </span><span class="o">.</span><span class="n">y</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">yScale</span><span class="p">(</span><span class="n">d</span><span class="p">);</span> <span class="p">});</span>
+
+<span class="n">svg</span> <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg:path&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;line&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="s">&quot;none&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;stroke&quot;</span><span class="p">,</span> <span class="s">&quot;black&quot;</span><span class="p">);</span>
+
 <span class="o">//</span> <span class="n">Create</span> <span class="n">circles</span>
 <span class="n">svg</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -2601,18 +2618,6 @@ svg.append("g")
         <span class="k">return</span> <span class="n">yScale</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
    <span class="p">})</span>
    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
-
-    
-<span class="o">//</span> <span class="n">Create</span> <span class="n">line</span>
-<span class="n">var</span> <span class="n">line</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">line</span><span class="p">()</span>
-<span class="err">    </span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">xScale</span><span class="p">(</span><span class="n">i</span><span class="p">);</span> <span class="p">})</span>
-<span class="err">    </span><span class="o">.</span><span class="n">y</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">yScale</span><span class="p">(</span><span class="n">d</span><span class="p">);</span> <span class="p">});</span>
-
-<span class="n">svg</span> <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg:path&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;line&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="s">&quot;none&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;stroke&quot;</span><span class="p">,</span> <span class="s">&quot;black&quot;</span><span class="p">);</span>
 
 <span class="o">//</span> <span class="n">Define</span> <span class="n">X</span> <span class="n">axis</span>
 <span class="n">var</span> <span class="n">xAxis</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">axis</span><span class="p">()</span>
@@ -2662,7 +2667,7 @@ svg.append("g")
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">!</span>cp /homes/abie/notebook/2013_07_04b_IDV4GH_Exercise_02_hello_world.ipynb /homes/abie/nbconvert/E2.ipynb
 <span class="o">!</span><span class="nb">cd</span> /homes/abie/nbconvert/; ./nbconvert.py --format reveal E2.ipynb

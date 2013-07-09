@@ -64,6 +64,17 @@ var yScale = d3.scale.linear()
         function(d) { return d; })])
     .range([height-20, 0]);
 
+// Create line
+var line = d3.svg.line()
+    .x(function(d,i) { return xScale(i); })
+    .y(function(d) { return yScale(d); });
+
+svg .append("svg:path")
+    .attr("class", "line")
+    .attr("d", line(dataset))
+    .attr("fill", "none")
+    .attr("stroke", "black");
+
 // Create circles
 svg.selectAll("circle")
    .data(dataset)
@@ -77,18 +88,6 @@ svg.selectAll("circle")
         return yScale(d);
    })
    .attr("r", 15);
-
-    
-// Create line
-var line = d3.svg.line()
-    .x(function(d,i) { return xScale(i); })
-    .y(function(d) { return yScale(d); });
-
-svg .append("svg:path")
-    .attr("class", "line")
-    .attr("d", line(dataset))
-    .attr("fill", "none")
-    .attr("stroke", "black");
 
 // Define X axis
 var xAxis = d3.svg.axis()
