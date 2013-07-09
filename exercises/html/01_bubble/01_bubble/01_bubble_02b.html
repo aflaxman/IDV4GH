@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+/* css goes here */
+</style>
+
+<body>
+
+<p>HTML goes here.</p>
+
+<script src="../d3.v3.js"></script>
+<script>
+// javascript goes here
+var margin = {top: 10, right: 10,
+              bottom: 20, left: 40},
+    width = 960 - margin.left
+            - margin.right,
+    height = 500 - margin.top
+            - margin.bottom;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width
+          + margin.left + margin.right)
+    .attr("height", height
+          + margin.top + margin.bottom);
+    
+var dot = svg.append("circle")
+    .attr("r", 100)
+    .attr("cx", 150)
+    .attr("cy", 150)
+    .style("fill", "red")
+    .style("stroke", "blue")
+    .style("stroke-width", 2)
+    .style("stroke-dasharray", "5,5");
+</script>

@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+th { cursor: pointer; }
+</style>
+
+<body>
+<p>GBD Heatmap Table</p>
+
+<script src="../d3.v3.js"></script>
+<script>
+var data = d3.csv.parse("condition,China,North Korea,Taiwan\nRoad injury,1,2,1\nLow back pain,2,3,2\nMajor depressive disorder,3,4,5\nSelf-harm,4,1,3\nDrug use disorders,5,5,6"),
+    areas = ["China", "North Korea", "Taiwan"];
+
+var table = d3.select("body").append("table");
+
+table.append("thead")
+    .append("tr").selectAll("th")
+    .data([""].concat(areas))
+    .enter()
+    .append("th")
+    .text(Object)
+    .on("click", sortByArea);
+    
+table.append("tbody")
+    .selectAll("tr").data(data)
+    .enter()
+    .append("tr")
+    .selectAll("td")
+    .data(function(d) {
+        return [d.condition].concat(
+            areas.map(function(a) {
+                return d[a]; }))})
+    .enter()
+    .append("td")
+    .text(Object)
+    
+function sortByArea(a) {
+    if(a) {
+        comp = function(r,s) {
+            return r[a] - s[a];
+        }
+    } else {
+        comp = function(r,s) {
+            return r.condition > s.condition;
+        }
+    }
+    table.select("tbody")
+        .selectAll("tr")
+        .sort(comp);
+}
+</script>
