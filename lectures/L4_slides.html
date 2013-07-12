@@ -1193,25 +1193,157 @@ div.output_prompt {
 <body>
 <div class="reveal"><div class="slides">
 <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Interactive Data Visualization for Global Health</h1>
+<h2>Lecture 4: Interaction</h2>
+</div>
+<aside class="notes">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is what sets us apart… until now, this class has done little that was not available when first known textbox on statistical graphics was published one million years ago.  We used keyboards and HTML instead of drafting tables and fountain pens, but the results were the same.  Animation and interaction changes all that.  now it is really something new, or new-ish.  Something that was not available 40 years ago, and was prohibitively expensive 30 years ago, and was just getting figured out 20 years ago, and is really ready to spread now.</p>
+</div>
+</aside>
+</section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>IDV4GH Exercise 3</h1>
-<h2>D3js for Tables</h2>
+<h2>Outline:</h2>
+<ul>
+<li>Data exercise</li>
+<li>Visual Information-Seeking Mantra</li>
+<li>Relevance to interactive data visualization of your choosing</li>
+<li>Taxonomy of interaction</li>
+<li>User-stories</li>
+<li>Sketching interactions</li>
+<li>HTML input tags</li>
+<li>Coding exercise - Adding interactions to E1 bubble chart</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Questions?</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>A look at SVG part of yesterday's exercise</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>You remember what does this code do?</h2>
+<pre><code>d3.select("body").selectAll("p")
+    .data([1,2,3,4,5])
+    .enter()
+    .append("p")
+    .text("New paragraph!");
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Then what will following it with this code do?</h2>
+<pre><code>var p = d3.select("body").selectAll("p")
+    .data([1,2,3]);
+p.enter().append("p");
+p.text("Even newer!");
+p.exit().remove();
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Last Homework</h2>
+<ul>
+<li>How did it go?  I might not have given you enough to go on.</li>
+<li>Am I rushing things?</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Some examples of data is .js format</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Last Reading</h2>
+<ul>
+<li>S. Kosslyn, The mind is not a camera</li>
+<li>S. Murray, IDV4W, Chapter 6</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Speaking of the mind and cameras, have you ever seen what your eye is doing?</h2>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">Image</span><span class="p">(</span><span class="n">TK</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Data exercise</h2>
+<ul>
+<li>Let's share what we've got</li>
+</ul>
+</div>
+</section>
+<section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Visual Information-Seeking Mantra</h2>
+<ul>
+<li>Overview first</li>
+<li>Zoom and filter</li>
+<li>Details on demand</li>
+</ul>
 </div>
 </section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>The goal of this exercise is to learn more about HTML and D3</h2>
-<h2>The approach is to make something like the <a href="http://www.healthmetricsandevaluation.org/gbd/visualizations/gbd-heatmap?type=Heat&amp;cr=cause&amp;metric=2&amp;colGrp=East%20Asia&amp;sex=3&amp;age=9&amp;yr=2010&amp;geoRef=CHN&amp;rankRange=1,10&amp;geoShow=&amp;geoHidden=&amp;heatDimen=70__30__2__20__40__90__32">Heatmap from the GBD 2010</a></h2>
+<h2>Exercise: determine the relevance of the mantra to an interactive data visualization of your choosing</h2>
 </div>
-</section><section>
+</section>
+</section>
+<section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>In other words, we will do a lot of work to have something look roughly like this:</h2>
+<h2>Taxonomy of interaction</h2>
+<ul>
+<li><em>Overview</em> of entire collection;</li>
+<li><em>Zoom</em> on item of interest;</li>
+<li><em>Filter</em> out uninteresting items;</li>
+<li><em>Details-on-demand</em> for item or group of items;</li>
+<li><em>Relate</em> items;</li>
+<li><em>History</em> to support undo, replay, etc;</li>
+<li><em>Extract</em> subcollection, etc.</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><a href="http://en.wikipedia.org/wiki/User_story">User Stories</a></h2>
+<ul>
+<li>"As [who] [when] [where], I [what] because [why]."</li>
+<li>E.g. As a user, I want to search for my customers by their first and last names.</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><a href="http://www.flickr.com/groups/uxsketch/pool/">Sketching User Experiences</a></h2>
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span><span class="o">,</span> <span class="nn">StringIO</span>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 </pre></div>
 
 </div>
@@ -1219,15 +1351,9 @@ div.output_prompt {
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">print</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span>
-<span class="sd">&quot;&quot;&quot;,China,North Korea,Taiwan</span>
-<span class="sd">Road injury,1,2,1</span>
-<span class="sd">Low back pain,2,3,2</span>
-<span class="sd">Major depressive disorder,3,4,5</span>
-<span class="sd">Self-harm,4,1,3</span>
-<span class="sd">Drug use disorders,5,5,6&quot;&quot;&quot;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">embed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1235,1192 +1361,431 @@ div.output_prompt {
 <div class="vbox output_wrapper">
 <div class="output vbox">
 <div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>                           China  North Korea  Taiwan
-Road injury                    1            2       1
-Low back pain                  2            3       2
-Major depressive disorder      3            4       5
-Self-harm                      4            1       3
-Drug use disorders             5            5       6
-</pre>
+<div class="prompt output_prompt">Out[5]:</div>
+<div class="output_subarea output_pyout">
+<img src="data:image/jpeg;base64,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
+GsBbnSYr7SlYLhSlKAUpSgFKUoBUL4p23Uk93S8jTC1Ik268KmP5dCG1tJhyR2bmfsFuKbbJAJTv
+3Ad2ppWu+Od9vVjt+m/YS8wrQ7OvJiuyJshthjb6FKcSlbjjTgQC4230SSfcjGc0BDtGxuJdi0ui
+3MWCZGli3ByP2TMTDsoW6K0hMhW4ZCHA73ld5RQgbtqcH1cBxQgPzrva4F8lSprMSMzJcjwjLLLB
+mOYeQClpJU68kd1Oezx0WeVpeNV3OTqO1uXd662osphF0KkOMIkYlIK3QyMFKFJivEBWSULGQnmK
+kM/VupI3GO4WmLcmJ0CLKjtqsqHGzKLbzDYDiGwzvDaXFla3VO7UpQoY58gPj+mtXSdN6OVZXHrB
+eYsySX3xGabaQ2UvqT27DZCFIUdvdAykubuSs1h40bidZY8TTVjYvUK3Riq3sPpYjPhLabikNSlL
+cJUpSooeUoKG3kg4Clirabx4uLtrXKtdstHadl2wbkPuo7MIhsyVIUdme+r0tltWBlbIwDhWL6Lx
+QuVks3sZGNs1Gq1RG46ZhnLEiftjBz0zaQcx1KwwH9xC3iceAIFG43XjF6fd41vVdHJAghMWE63A
+DiCtuc2iTkAAgONRVK5nJUrCEpISL9U7i3Ovdw9GF7hRmvTpkNDsKGlDoSlPo0UnvHBWFAqJCiAT
+kbklOw9HPx9QRYup5EFEa6oaft8hDb6nENqbeKHWweQUA40cKKQceWSKkmB5CgNP8MbfqBOukTbp
+G1V6OyJrTDk2NEaQQ+8XnFu7UhXe2xsBH2QPIAKrcOB5V8xz6V9oBSlKAsbX9c3H8q/y26vqsbX9
+c3H8q/y26vqAUpSgFKUoBSlKAUpSgFKUoC2u3vVL/EL+aa1loHhdoeZoWwTJFocW8/bIzjh9LeGV
+FpJP2fnWzLvytMw/9Qv5pqF6DvEljQ1hYQ2yUtW2OhOQc4DSQPGgxk9/xSaB+8zn6a/+/X3+KXQP
+3lc/TXv36yqr/MAz2TH5p+mvPtgmfco/5p+mhjCMYeEugse8zn6a9+/WR01oDSunboLnaLctiUEK
+b3mS4vuqxkYUojwr2L/MJ/mo/wCafpr6L/MzjsmPzT9NBhEk8a+1GvZ+Z9yY/NP009n5n3Jj80/T
+QySWmfUajPtgmfco/wCafpp7YJn3Jj80/TQElJ5eNYC+x9TmPPXZ5kdD6juih0ZSAEAbCMfbbiDn
+qRnIG00fbBM+5Mfmn6ae2CZ9yj/mn6aAs24ev0QFrcu8F6UhSA2lLIQlQG/eTyPMkpwc9E5IBJFX
+bcHWKJqFG8RHIoThSFNgKJ2jodvLnu8/DyIP32wTPuUf80/TT2wTPuUf80/TQFKXbNY+yCnYeoGU
+x1MJT2brSTscwgKUO5zHdUQCeq1eoChItmulF1Td7t5Ul4KjJW1ySna6DuwjJPeb+RXmMXntgmfc
+o/5p+mntgmfco/5p+mgM5ampTVsitTnkvykMpS86kYC1gDcofCcmrgJAUVBIBPInHM/+cmo4b/MG
+PqUf80/TXwX+Z9yj/mn6aAkuxOScDJ5Zx/58zTAz0qNe2CZ9yj/mn6aC/wAzP81H/NP00BJuQpUa
+N+mYz2TH5p+mvntgmfco/wCafpoCTUqM+2CZ9yj/AJp+mntgmfco/wCafpoCTUzUaF/mH/k2PzT9
+NPZ6YB/Nsfmn6aAy9r+ubj+Vf5bdX1YnTT65LMyQ4EhS5JJCenJCB+ystQClKUApSlAKUpQH/9k=
+"></img>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>But it will look nicer!</h2>
-<h2>And be interactive</h2>
-</div>
-</section>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>To start, our trusty skeleton:</h2>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;meta charset="utf-8"&gt;
-
-&lt;style&gt;
-/* css goes here */
-&lt;/style&gt;
-
-&lt;body&gt;
-&lt;p&gt;HTML goes here.&lt;/p&gt;
-
-&lt;script src="../d3.v3.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-// javascript goes here
-&lt;/script&gt;
-</code></pre>
-<p><a href="html/03_table/03_table_00.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_00</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">//</span> <span class="n">javascript</span> <span class="n">goes</span> <span class="n">here</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/03_table/03_table_00.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>To get started, figure out how to make an HTML table</h2>
-<h2>Google can help</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Here is a way to do it, what a mess:</h2>
-<pre><code>&lt;table&gt;
-    &lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;China&lt;/th&gt;&lt;th&gt;North Korea&lt;/th&gt;&lt;th&gt;Taiwan&lt;/th&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;Road injury&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;Low back pain&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;Major depressive disorder&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;Self-harm&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;Drug use disorders&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
-</code></pre>
-<p><a href="html/03_table/03_table_01.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_01</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">th</span><span class="o">&gt;&lt;/</span><span class="n">th</span><span class="o">&gt;&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">China</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">North</span> <span class="n">Korea</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">Taiwan</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Road</span> <span class="n">injury</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Low</span> <span class="n">back</span> <span class="n">pain</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Major</span> <span class="n">depressive</span> <span class="n">disorder</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Self</span><span class="o">-</span><span class="n">harm</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Drug</span> <span class="n">use</span> <span class="n">disorders</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">//</span> <span class="n">javascript</span> <span class="n">goes</span> <span class="n">here</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Writing html/03_table/03_table_01.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>And CSS to style it:</h2>
-<pre><code>table
-{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th
-{
-    height:50px;
-    background-color:green;
-    color:white;
-}
-
-td
-{
-    text-align:right;
-    height:50px;
-    vertical-align:bottom;
-    padding:15px;
-}
-
-
-table, th, td
-{
-    border: 1px solid green;
-}
-</code></pre>
-<p><a href="html/03_table/03_table_01b.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_01b</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">table</span>
-<span class="p">{</span>
-    <span class="n">width</span><span class="p">:</span><span class="mi">960</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">border</span><span class="o">-</span><span class="n">collapse</span><span class="p">:</span><span class="n">collapse</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">th</span>
-<span class="p">{</span>
-    <span class="n">height</span><span class="p">:</span><span class="mi">50</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span><span class="n">green</span><span class="p">;</span>
-    <span class="n">color</span><span class="p">:</span><span class="n">white</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">td</span>
-<span class="p">{</span>
-    <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span><span class="n">right</span><span class="p">;</span>
-    <span class="n">height</span><span class="p">:</span><span class="mi">50</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="p">:</span><span class="n">bottom</span><span class="p">;</span>
-    <span class="n">padding</span><span class="p">:</span><span class="mi">15</span><span class="n">px</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-<span class="n">table</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span>
-<span class="p">{</span>
-    <span class="n">border</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="n">green</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">th</span><span class="o">&gt;&lt;/</span><span class="n">th</span><span class="o">&gt;&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">China</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">North</span> <span class="n">Korea</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="n">Taiwan</span><span class="o">&lt;/</span><span class="n">th</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Road</span> <span class="n">injury</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Low</span> <span class="n">back</span> <span class="n">pain</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Major</span> <span class="n">depressive</span> <span class="n">disorder</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Self</span><span class="o">-</span><span class="n">harm</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="n">Drug</span> <span class="n">use</span> <span class="n">disorders</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">td</span><span class="o">&gt;&lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">table</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">//</span> <span class="n">javascript</span> <span class="n">goes</span> <span class="n">here</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/03_table/03_table_01b.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>If I gave you the CSV data for this, could you get d3 to make the table for you?</h2>
-<pre><code>condition,China,North Korea,Taiwan
-Road injury,1,2,1
-Low back pain,2,3,2
-Major depressive disorder,3,4,5
-Self-harm,4,1,3
-Drug use disorders,5,5,6
-</code></pre>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_02</span><span class="o">.</span><span class="n">csv</span>
-<span class="n">condition</span><span class="p">,</span><span class="n">China</span><span class="p">,</span><span class="n">North</span> <span class="n">Korea</span><span class="p">,</span><span class="n">Taiwan</span>
-<span class="n">Road</span> <span class="n">injury</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span>
-<span class="n">Low</span> <span class="n">back</span> <span class="n">pain</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span>
-<span class="n">Major</span> <span class="n">depressive</span> <span class="n">disorder</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span>
-<span class="n">Self</span><span class="o">-</span><span class="n">harm</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-<span class="n">Drug</span> <span class="n">use</span> <span class="n">disorders</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Writing html/03_table/03_table_02.csv
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Way to start: <code>d3.csv.parse</code></h2>
-<pre><code>var data = d3.csv.parse("condition,China,North Korea,Taiwan\nRoad injury,1,2,1\nLow back pain,2,3,2\nMajor depressive disorder,3,4,5\nSelf-harm,4,1,3\nDrug use disorders,5,5,6");
-</code></pre>
-<p><a href="html/03_table/03_table_02.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_02</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">);</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/03_table/03_table_02.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>A way to do it</h2>
-<pre><code>var table = d3.select("body").append("table");
-
-table.append("thead").append("tr").selectAll("th")
-    .data(["","China","North Korea","Taiwan"])
-    .enter()
-    .append("th")
-    .text(Object);
-
-table.append("tbody").selectAll("tr")
-    .data(data)
-    .enter()
-    .append("tr")
-    .selectAll("td")
-    .data(function(d){ return [d.condition,d["China"],d["North Korea"],d["Taiwan"]]; })
-    .enter()
-    .append("td")
-    .text(Object)
-</code></pre>
-<p><a href="html/03_table/03_table_02b.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_02b</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">table</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;table&quot;</span><span class="p">);</span>
-
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;thead&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;China&quot;</span><span class="p">,</span><span class="s">&quot;North Korea&quot;</span><span class="p">,</span><span class="s">&quot;Taiwan&quot;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">);</span>
-    
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tbody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">){</span> <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">,</span><span class="n">d</span><span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="s">&quot;North Korea&quot;</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="s">&quot;Taiwan&quot;</span><span class="p">]];</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Writing html/03_table/03_table_02b.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>A little cleaner version</h2>
-<pre><code>areas = ["China", "North Korea", "Taiwan"];
-
-var table = d3.select("body").append("table");
-
-table.append("thead")
-    .append("tr").selectAll("th")
-    .data([""].concat(areas))
-    .enter()
-    .append("th")
-    .text(Object);
-
-table.append("tbody").selectAll("tr")
-    .data(data)
-    .enter()
-    .append("tr")
-    .selectAll("td")
-    .data(function(d) {
-        return [d.condition].concat(
-            areas.map(function(a) {
-                return d[a]; }))})
-    .enter()
-    .append("td")
-</code></pre>
-<p><a href="html/03_table/03_table_02c.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_02c</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">),</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;North Korea&quot;</span><span class="p">,</span> <span class="s">&quot;Taiwan&quot;</span><span class="p">];</span>
-
-<span class="n">var</span> <span class="n">table</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;table&quot;</span><span class="p">);</span>
-
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;thead&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">);</span>
-    
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tbody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-            <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">];</span> <span class="p">}))})</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Writing html/03_table/03_table_02c.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Add some interaction, sorting</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>For example, click on column header to sort by that column</h2>
-<pre><code>table.append("thead")
-    .append("tr").selectAll("th")
-    .data([""].concat(areas))
-    .enter()
-    .append("th")
-    .text(Object)
-    .on("click", sortByArea);
-...
-function sortByArea(a) {
-    console.log(a);
-}
-</code></pre>
-<p><a href="html/03_table/03_table_03.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_03</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">),</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;North Korea&quot;</span><span class="p">,</span> <span class="s">&quot;Taiwan&quot;</span><span class="p">];</span>
-
-<span class="n">var</span> <span class="n">table</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;table&quot;</span><span class="p">);</span>
-
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;thead&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;click&quot;</span><span class="p">,</span> <span class="n">sortByArea</span><span class="p">);</span>
-    
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tbody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-            <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">];</span> <span class="p">}))})</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    
-<span class="n">function</span> <span class="n">sortByArea</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/03_table/03_table_03.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Notice anything wrong with this interaction?</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>No hint that you can click the column headers</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>CSS can fix that</h2>
-<pre><code>th { cursor: pointer; }
-</code></pre>
-<p><a href="html/03_table/03_table_03b.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_03b</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">th</span> <span class="p">{</span> <span class="n">cursor</span><span class="p">:</span> <span class="n">pointer</span><span class="p">;</span> <span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">),</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;North Korea&quot;</span><span class="p">,</span> <span class="s">&quot;Taiwan&quot;</span><span class="p">];</span>
-
-<span class="n">var</span> <span class="n">table</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;table&quot;</span><span class="p">);</span>
-
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;thead&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;click&quot;</span><span class="p">,</span> <span class="n">sortByArea</span><span class="p">);</span>
-    
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tbody&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-            <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">];</span> <span class="p">}))})</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    
-<span class="n">function</span> <span class="n">sortByArea</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Writing html/03_table/03_table_03b.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Back to sorting</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Adding brains to the <code>sortByArea</code> function</h2>
-<pre><code>function sortByArea(a) {
-    console.log(a);
-    function comp(r,s) {
-        return r[a] - s[a];
-    }
-    table.select("tbody")
-        .selectAll("tr")
-        .sort(comp);
-}
-</code></pre>
-<p><a href="html/03_table/03_table_03c.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_03c</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">th</span> <span class="p">{</span> <span class="n">cursor</span><span class="p">:</span> <span class="n">pointer</span><span class="p">;</span> <span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">),</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;North Korea&quot;</span><span class="p">,</span> <span class="s">&quot;Taiwan&quot;</span><span class="p">];</span>
-
-<span class="n">var</span> <span class="n">table</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;table&quot;</span><span class="p">);</span>
-
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;thead&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;click&quot;</span><span class="p">,</span> <span class="n">sortByArea</span><span class="p">);</span>
-    
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tbody&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-            <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">];</span> <span class="p">}))})</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    
-<span class="n">function</span> <span class="n">sortByArea</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-    <span class="n">function</span> <span class="n">comp</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">[</span><span class="n">a</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="n">table</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;tbody&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">comp</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/03_table/03_table_03c.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Anything wrong?</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Fix that little edge case</h2>
-<pre><code>function sortByArea(a) {
-    if(a) {
-        comp = function(r,s) {
-            return r[a] - s[a];
-        }
-    } else {
-        comp = function(r,s) {
-            return r.condition &gt; s.condition;
-        }
-    }
-    table.select("tbody")
-        .selectAll("tr")
-        .sort(comp);
-}
-</code></pre>
-<p><a href="html/03_table/03_table_03d.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_03d</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">th</span> <span class="p">{</span> <span class="n">cursor</span><span class="p">:</span> <span class="n">pointer</span><span class="p">;</span> <span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">Table</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">),</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;North Korea&quot;</span><span class="p">,</span> <span class="s">&quot;Taiwan&quot;</span><span class="p">];</span>
-
-<span class="n">var</span> <span class="n">table</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;table&quot;</span><span class="p">);</span>
-
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;thead&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;th&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;click&quot;</span><span class="p">,</span> <span class="n">sortByArea</span><span class="p">);</span>
-    
-<span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tbody&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-            <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">];</span> <span class="p">}))})</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    
-<span class="n">function</span> <span class="n">sortByArea</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">comp</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">[</span><span class="n">a</span><span class="p">];</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">comp</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">condition</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">condition</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">table</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;tbody&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;tr&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">comp</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/03_table/03_table_03d.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>And how to animate the sorting?  Now we need SVG version</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Start of an SVG version, after all that HTML work</h2>
-<pre><code>var width = 960,
-    height = 500;
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
-var thead = svg.append("g");
-thead.selectAll("g")
-    .data([""].concat(areas))
-    .enter()
-    .append("text")
-    .text(Object)
-    .attr('x', function(d,i) {
-        return 100*i; })
-    .attr('y', 150)
-    .attr('fill', 'black')
-    .on("click", null);
-</code></pre>
-<p><a href="html/03_table/03_table_04.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_04</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">th</span> <span class="p">{</span> <span class="n">cursor</span><span class="p">:</span> <span class="n">pointer</span><span class="p">;</span> <span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">SVG</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">),</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;North Korea&quot;</span><span class="p">,</span> <span class="s">&quot;Taiwan&quot;</span><span class="p">];</span>
-
-<span class="n">var</span> <span class="n">cell_width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
-    <span class="n">cell_height</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
-    <span class="n">width</span><span class="o">=</span><span class="n">cell_width</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="n">cell_height</span><span class="o">*</span><span class="mi">6</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">thead</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-<span class="n">thead</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">cell_width</span><span class="o">*</span><span class="n">i</span><span class="p">;</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">cell_height</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;fill&#39;</span><span class="p">,</span> <span class="s">&#39;black&#39;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;click&quot;</span><span class="p">,</span> <span class="n">null</span><span class="p">);</span>
-    
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/03_table/03_table_04.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Add the rows</h2>
-<pre><code>var tbody = svg.append("g");
-tbody.selectAll("g").data(data)
-    .enter()
-    .append("g")
-    .selectAll("text")
-    .data(function(d, i) {
-        return [[i, d.condition]].concat(
-            areas.map(function(a) {
-                return [i, d[a]]; }))})
-    .enter()
-    .append("text")
-    .text(function(d) {
-        return d[1]; })
-    .attr('x', function(d,j) {
-        return cell_width*j; })
-    .attr('y', function(d) {
-        return (d[0]+2)*cell_height; });
-</code></pre>
-<p><a href="html/03_table/03_table_04b.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[75]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_04b</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">th</span> <span class="p">{</span> <span class="n">cursor</span><span class="p">:</span> <span class="n">pointer</span><span class="p">;</span> <span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">SVG</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">),</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;North Korea&quot;</span><span class="p">,</span> <span class="s">&quot;Taiwan&quot;</span><span class="p">];</span>
-
-<span class="n">var</span> <span class="n">cell_width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
-    <span class="n">cell_height</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
-    <span class="n">width</span><span class="o">=</span><span class="n">cell_width</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="n">cell_height</span><span class="o">*</span><span class="mi">6</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">thead</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-<span class="n">thead</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">cell_width</span><span class="o">*</span><span class="n">j</span><span class="p">;</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">cell_height</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;click&quot;</span><span class="p">,</span> <span class="n">null</span><span class="p">);</span>
-    
-    
-<span class="n">var</span> <span class="n">tbody</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-<span class="n">tbody</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">]]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-            <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">]];</span> <span class="p">}))})</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">cell_width</span><span class="o">*</span><span class="n">j</span><span class="p">;</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">cell_height</span><span class="p">;</span> <span class="p">});</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/03_table/03_table_04b.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>And animating it takes some thinking, too</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Is there a simpler way?</h2>
-<pre><code>function sortByArea(a) {
-    if(a) {
-        comp = function(r,s) {
-            return r[a] - s[a];
-        }
-    } else {
-        comp = function(r,s) {
-            return r.condition &gt; s.condition;
-        }
-    }
-    console.log(a);
-    tbody.selectAll("g")
-        .sort(comp)
-        .selectAll("text")
-        .data(function(d, i) {
-            return [[i, d.condition]].concat(
-                areas.map(function(a) {
-                    return [i, d[a]]; }))})
-        .transition()
-        .attr('y', function(d) {
-            console.log(d);
-            return (d[0]+2)*cell_height; });
-}
-</code></pre>
-<p><a href="html/03_table/03_table_05.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">03</span><span class="n">_table</span><span class="o">/</span><span class="mo">03</span><span class="n">_table_05</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">th</span> <span class="p">{</span> <span class="n">cursor</span><span class="p">:</span> <span class="n">pointer</span><span class="p">;</span> <span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">GBD</span> <span class="n">Heatmap</span> <span class="n">SVG</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">data</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;condition,China,North Korea,Taiwan</span><span class="se">\n</span><span class="s">Road injury,1,2,1</span><span class="se">\n</span><span class="s">Low back pain,2,3,2</span><span class="se">\n</span><span class="s">Major depressive disorder,3,4,5</span><span class="se">\n</span><span class="s">Self-harm,4,1,3</span><span class="se">\n</span><span class="s">Drug use disorders,5,5,6&quot;</span><span class="p">),</span>
-    <span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;North Korea&quot;</span><span class="p">,</span> <span class="s">&quot;Taiwan&quot;</span><span class="p">];</span>
-
-<span class="n">var</span> <span class="n">cell_width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
-    <span class="n">cell_height</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
-    <span class="n">width</span><span class="o">=</span><span class="n">cell_width</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="n">cell_height</span><span class="o">*</span><span class="mi">6</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">thead</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-<span class="n">thead</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">areas</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">cell_width</span><span class="o">*</span><span class="n">j</span><span class="p">;</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">cell_height</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;click&quot;</span><span class="p">,</span> <span class="n">sortByArea</span><span class="p">);</span>
-    
-    
-<span class="n">var</span> <span class="n">tbody</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-<span class="n">tbody</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">]]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-            <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">]];</span> <span class="p">}))})</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">cell_width</span><span class="o">*</span><span class="n">j</span><span class="p">;</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">cell_height</span><span class="p">;</span> <span class="p">});</span>
-    
-<span class="n">function</span> <span class="n">sortByArea</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">comp</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">[</span><span class="n">a</span><span class="p">];</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">comp</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">condition</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">condition</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-    <span class="n">tbody</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">condition</span><span class="p">]]</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-                <span class="n">areas</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">]];</span> <span class="p">}))})</span>
-        <span class="o">.</span><span class="n">transition</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">cell_height</span><span class="p">;</span> <span class="p">});</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Writing html/03_table/03_table_05.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Tomorrow: cool interactions and the return of our bubble chart</h2>
+<h2><a href="https://www.google.com/search?q=html+input+tags">HTML input tags</a></h2>
+<ul>
+<li><code>&lt;input type=XXX&gt;</code></li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Weekend homework:</h2>
+<ul>
+<li>Write a user story for your project</li>
+<li>Sketch an interaction for the user story</li>
+<li>Give it a go with d3js!</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Weekend reading</h2>
+<ul>
+<li>Ben Shneiderman, <a href="http://drum.lib.umd.edu/bitstream/1903/5784/1/TR_96-66.pdf">The Eyes Have It:</a>  A Task by Data Type Taxonomy for Information Visualizations;</li>
+<li>S. Murray, <em>IDV4W</em>, Chapters <a href="http://chimera.labs.oreilly.com/books/1230000000345/ch07.html">7</a> and <a href="http://chimera.labs.oreilly.com/books/1230000000345/ch08.html">8</a>.</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Exercise 4</h2>
+<ul>
+<li>Adding interaction to the bubble chart from E1</li>
+</ul>
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">!</span>cp /homes/abie/notebook/2013_07_04d_IDV4GH_Exercise_03_Tables.ipynb /homes/abie/nbconvert/E3.ipynb
-<span class="o">!</span><span class="nb">cd</span> /homes/abie/nbconvert/; ./nbconvert.py --format reveal E3.ipynb
-<span class="o">!</span>cp /homes/abie/nbconvert/E3* /home/j/Project/Models/IDV4GH/exercises
-<span class="o">!</span>cp -r /homes/abie/notebook/html/03_table/ /home/j/Project/Models/IDV4GH/exercises/html/
+<div class="highlight"><pre><span class="o">!</span>cp /homes/abie/notebook/2013_07_11_IDV4GH_L4.ipynb /homes/abie/nbconvert/L4.ipynb
+<span class="o">!</span><span class="nb">cd</span> /homes/abie/nbconvert/; ./nbconvert.py --format reveal L4.ipynb
+<span class="o">!</span>cp /homes/abie/nbconvert/L4* /home/j/Project/Models/IDV4GH/lectures/
 </pre></div>
 
 </div>
@@ -2444,7 +1809,7 @@ please consider using the new version.
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">ipynb_style</span>
 <span class="n">ipynb_style</span><span class="o">.</span><span class="n">presentation</span><span class="p">()</span>
@@ -2455,7 +1820,7 @@ please consider using the new version.
 <div class="vbox output_wrapper">
 <div class="output vbox">
 <div class="hbox output_area">
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 <div class="output_subarea output_pyout output_html rendered_html">
 
 <style type="text/css">
@@ -2505,9 +1870,6 @@ font-size: 14pt;
 </div>
 </div>
 </div>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Some hints from <a href="http://www.devforrest.com/blog/scrollable-sortable-html-table-with-static-headers-using-d3-js/">devforrest blog</a></p>
 </div>
 
 </section>
