@@ -30,7 +30,7 @@ text {
 </style>
 
 <body>
-<p>hello, world (of statistical graphics).</p>
+<p>Force-directed network layout.</p>
 
 <script src="../d3.v3.js"></script>
 <script src="net_data.js"></script>
@@ -65,7 +65,7 @@ var force = d3.layout.force()
     .size([width, height])
     .linkDistance(100)
     .charge(-200)
-    .friction(1)
+    .friction(.3)
     .on("tick", tick)
     .start();
     

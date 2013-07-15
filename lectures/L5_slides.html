@@ -1194,59 +1194,96 @@ div.output_prompt {
 <div class="reveal"><div class="slides">
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1>IDV4GH Exercise 5</h1>
-<h2>Force layout and network visualiation</h2>
-<h2>(and more)</h2>
+<h1>Interactive Data Visualization for Global Health</h1>
+<h2>Lecture 5: Accessibility</h2>
 </div>
 </section>
 <section>
+<section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Where to start?</h2>
+<h2><em>Accessibility</em> is a very broad term here.  The <a href="http://www.w3.org/TR/WAI-WEBCONTENT/">web content accessibility guidelines</a> put it as follows:</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>For those unfamiliar with accessibility issues pertaining to Web page design, consider that many users may be operating in contexts very different from your own:</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>They may not be able to see, hear, move, or may not be able to process some types of information easily or at all.</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>They may have difficulty reading or comprehending text.</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>They may not have or be able to use a keyboard or mouse.</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>They may have a text-only screen, a small screen, or a slow Internet connection.</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>They may not speak or understand fluently the language in which the document is written.</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>They may be in a situation where their eyes, ears, or hands are busy or interfered with (e.g., driving to work, working in a loud environment, etc.).</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>They may have an early version of a browser, a different browser entirely, a voice browser, or a different operating system.</h2>
+</div>
+</section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><em>In today's class</em>: we will discuss techniques and challenges in making interactive data visualizations accessible. <em>But</em>, we will also have many more small coding exercises, and integrate them into the lecture more extensively.</h2>
+</div>
+</section>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Outline:</h2>
 <ul>
-<li>A skeleton that makes javascript even simpler</li>
+<li>Visualization and the blind</li>
+<li>Screen readers</li>
+<li>Table exercise</li>
+<li>Slow internet connections</li>
 </ul>
 </div>
 </section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Skeleton for IDV in d3js:</h2>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;meta charset="utf-8"&gt;
-
-&lt;style&gt;
-/* css goes here */
-&lt;/style&gt;
-
-&lt;body&gt;
-&lt;p&gt;SVG:&lt;/p&gt;
-&lt;svg width=800 height=200&gt;&lt;/svg&gt;
-&lt;script src="../d3.v3.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-// javascript goes here
-&lt;/script&gt;
-</code></pre>
-<p><a href="html/05_networks/05_networks_00.html">show results</a></p>
+<h2>Questions?</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Last Homework</h2>
+<ul>
+<li>Demos</li>
+<li>Sticking points</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Code quiz (in Exercise 5 deck)</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Last Reading</h2>
+<ul>
+<li>Ben Shneiderman, <a href="http://drum.lib.umd.edu/bitstream/1903/5784/1/TR_96-66.pdf">The Eyes Have It:</a>  A Task by Data Type Taxonomy for Information Visualizations;</li>
+<li>S. Murray, <em>IDV4W</em>, Chapters <a href="http://chimera.labs.oreilly.com/books/1230000000345/ch07.html">7</a> and <a href="http://chimera.labs.oreilly.com/books/1230000000345/ch08.html">8</a>.</li>
+</ul>
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks_00</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">SVG</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">svg</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="o">&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">//</span> <span class="n">javascript</span> <span class="n">goes</span> <span class="n">here</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">j</span><span class="o">/</span><span class="n">Project</span><span class="o">/</span><span class="n">Models</span><span class="o">/</span><span class="n">IDV4GH</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span>
 </pre></div>
 
 </div>
@@ -1256,158 +1293,18 @@ div.output_prompt {
 <div class="hbox output_area">
 <div class="prompt output_prompt"></div>
 <div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/05_networks/05_networks_00.html
+<pre>/snfs1/Project/Models/IDV4GH/projects
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>What does this do?</h2>
-<pre><code>var data = [3,1,4,1,5];
-var r = d3.select("svg")
-    .selectAll("rect")
-    .data(data);
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Then what will this do?</h2>
-<pre><code>r.enter()
-    .append("rect")
-    .attr("x", 10)
-    .attr("y", 10)
-    .attr("width", 100)
-    .attr("height", 10);
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Can you make it into a horizontal bar chart?</h2>
-<h2>(Can you animate that change?)</h2>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Solution (Horizontal bar chart)</h2>
-<pre><code>r.attr("y", function(d,i) {
-        return i*20; })
-    .attr("width", function(d) {
-        return d*100; });
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>What will this do?</h2>
-<pre><code>r.attr("y", 0)
-    .attr("width", 100);
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Solution (Animated transition)</h2>
-<pre><code>r.transition()
-    .attr("y", function(d,i) {
-        return i*20; })
-    .attr("width", function(d) {
-        return d*100; });
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Even cooler transition</h2>
-<pre><code>r.transition()
-    .attr("y", function(d,i) {
-        return i*20; })
-    .attr("width", function(d) {
-        return d*100; })
-    .delay(function (d, i) {
-        return i*2000; })
-    .duration(2000);
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>What will this do?</h2>
-<pre><code>var reset = function() {
-    r.attr("y", 0)
-        .attr("width", 100); }
-reset();
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>So what will this do?</h2>
-<pre><code>var set = function() {
-    r.transition()
-        .attr("y", function(d,i) {
-            return i*20; })
-        .attr("width", function(d) {
-            return d*100; })
-        .delay(function (d, i) {
-            return i*2000; })
-        .duration(2000); }
-set();
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Can you add buttons that <code>set</code> and <code>reset</code> when clicked?</h2>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>A Solution</h2>
-<pre><code>d3.select("body")
-    .append("input")
-    .attr("type", "button")
-    .attr("value","Reset")
-    .on("click", reset);
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Example with more meaningful data (Mari's js file)</h2>
-<ul>
-<li>Data I use is in <code>anc1</code> variable</li>
-</ul>
-<p><a href="html/05_networks/05_networks_00b.html">show results</a></p>
-</div>
-</section>
-<section>
-<div class="cell border-box-sizing code_cell vbox">
+<div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks_00b</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">SVG</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">svg</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="o">&gt;&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../../../projects/mari/data.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">//</span> <span class="n">javascript</span> <span class="n">goes</span> <span class="n">here</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span class="n">ls</span>
 </pre></div>
 
 </div>
@@ -1417,7 +1314,308 @@ set();
 <div class="hbox output_area">
 <div class="prompt output_prompt"></div>
 <div class="output_subarea output_stream output_stdout">
-<pre>Writing html/05_networks/05_networks_00b.html
+<pre><span class="ansibold ansiblue">Allen</span>/  <span class="ansibold ansiblue">Andrea</span>/  <span class="ansibold ansiblue">Anthony</span>/  d3.v3.js  <span class="ansibold ansiblue">Emily</span>/  <span class="ansibold ansiblue">Ian</span>/  <span class="ansibold ansiblue">Joey</span>/  <span class="ansibold ansiblue">Kyle</span>/  <span class="ansibold ansiblue">Mari</span>/  <span class="ansibold ansiblue">Thomas</span>/
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style=display:none class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># This could be a good exercise in bar charting</span>
+<span class="o">!</span>head -500 Mari/data.js
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>/* JavaScript file Generated by
+ * Creativyst(tm) CSV converter
+ *   (www.creativyst.com)
+ * 
+ * (C) Copyright 2002-2003, Creativyst, Inc.
+ * 
+ * Permission is hereby granted to use,
+ * distribute, and change this file for any
+ * reason, provided this entire comment remains
+ * intact with the work.
+ * 
+ *
+*/
+
+/*JSCPragma:StartCompress
+*/
+
+var lsz = 5;
+
+var Col0 = Array([lsz]);
+var anc1 = Array([lsz]);
+var tet = Array([lsz]);
+var anc4 = Array([lsz]);
+var ifd = Array([lsz]);
+var bf24 = Array([lsz]);
+var pnc48 = Array([lsz]);
+var pnc7 = Array([lsz]);
+var contra = Array([lsz]);
+var ebf = Array([lsz]);
+var vacc = Array([lsz]);
+var anc1lo = Array([lsz]);
+var tetlo = Array([lsz]);
+var anc4lo = Array([lsz]);
+var ifdlo = Array([lsz]);
+var bf24lo = Array([lsz]);
+var pnc48lo = Array([lsz]);
+var pnc7lo = Array([lsz]);
+var contralo = Array([lsz]);
+var ebflo = Array([lsz]);
+var vacclo = Array([lsz]);
+var anc1lodiff = Array([lsz]);
+var tetlodiff = Array([lsz]);
+var anc4lodiff = Array([lsz]);
+var ifdlodiff = Array([lsz]);
+var bf24lodiff = Array([lsz]);
+var pnc48lodiff = Array([lsz]);
+var pnc7lodiff = Array([lsz]);
+var contralodiff = Array([lsz]);
+var ebflodiff = Array([lsz]);
+var vacclodiff = Array([lsz]);
+var anc1hi = Array([lsz]);
+var tethi = Array([lsz]);
+var anc4hi = Array([lsz]);
+var ifdhi = Array([lsz]);
+var bf24hi = Array([lsz]);
+var pnc48hi = Array([lsz]);
+var pnc7hi = Array([lsz]);
+var contrahi = Array([lsz]);
+var ebfhi = Array([lsz]);
+var vacchi = Array([lsz]);
+var anc1hidiff = Array([lsz]);
+var tethidiff = Array([lsz]);
+var anc4hidiff = Array([lsz]);
+var ifdhidiff = Array([lsz]);
+var bf24hidiff = Array([lsz]);
+var pnc48hidiff = Array([lsz]);
+var pnc7hidiff = Array([lsz]);
+var contrahidiff = Array([lsz]);
+var ebfhidiff = Array([lsz]);
+var vacchidiff = Array([lsz]);
+
+Col0[0] = &quot;Never attended school (N=686)&quot;;
+anc1[0] = &quot;0.65&quot;;
+tet[0] = &quot;0.58&quot;;
+anc4[0] = &quot;0.48&quot;;
+ifd[0] = &quot;0.30&quot;;
+bf24[0] = &quot;0.69&quot;;
+pnc48[0] = &quot;0.15&quot;;
+pnc7[0] = &quot;0.28&quot;;
+contra[0] = &quot;0.15&quot;;
+ebf[0] = &quot;0.43&quot;;
+vacc[0] = &quot;0.36&quot;;
+anc1lo[0] = &quot;0.61&quot;;
+tetlo[0] = &quot;0.54&quot;;
+anc4lo[0] = &quot;0.44&quot;;
+ifdlo[0] = &quot;0.27&quot;;
+bf24lo[0] = &quot;0.65&quot;;
+pnc48lo[0] = &quot;0.12&quot;;
+pnc7lo[0] = &quot;0.24&quot;;
+contralo[0] = &quot;0.12&quot;;
+ebflo[0] = &quot;0.39&quot;;
+vacclo[0] = &quot;0.32&quot;;
+anc1lodiff[0] = &quot;0.04&quot;;
+tetlodiff[0] = &quot;0.04&quot;;
+anc4lodiff[0] = &quot;0.04&quot;;
+ifdlodiff[0] = &quot;0.03&quot;;
+bf24lodiff[0] = &quot;0.04&quot;;
+pnc48lodiff[0] = &quot;0.03&quot;;
+pnc7lodiff[0] = &quot;0.03&quot;;
+contralodiff[0] = &quot;0.03&quot;;
+ebflodiff[0] = &quot;0.04&quot;;
+vacclodiff[0] = &quot;0.04&quot;;
+anc1hi[0] = &quot;0.68&quot;;
+tethi[0] = &quot;0.62&quot;;
+anc4hi[0] = &quot;0.51&quot;;
+ifdhi[0] = &quot;0.34&quot;;
+bf24hi[0] = &quot;0.73&quot;;
+pnc48hi[0] = &quot;0.18&quot;;
+pnc7hi[0] = &quot;0.31&quot;;
+contrahi[0] = &quot;0.18&quot;;
+ebfhi[0] = &quot;0.47&quot;;
+vacchi[0] = &quot;0.40&quot;;
+anc1hidiff[0] = &quot;0.04&quot;;
+tethidiff[0] = &quot;0.04&quot;;
+anc4hidiff[0] = &quot;0.04&quot;;
+ifdhidiff[0] = &quot;0.04&quot;;
+bf24hidiff[0] = &quot;0.03&quot;;
+pnc48hidiff[0] = &quot;0.03&quot;;
+pnc7hidiff[0] = &quot;0.04&quot;;
+contrahidiff[0] = &quot;0.03&quot;;
+ebfhidiff[0] = &quot;0.04&quot;;
+vacchidiff[0] = &quot;0.04&quot;;
+
+Col0[1] = &quot;Primary school (N=1781)&quot;;
+anc1[1] = &quot;0.72&quot;;
+tet[1] = &quot;0.65&quot;;
+anc4[1] = &quot;0.56&quot;;
+ifd[1] = &quot;0.40&quot;;
+bf24[1] = &quot;0.72&quot;;
+pnc48[1] = &quot;0.22&quot;;
+pnc7[1] = &quot;0.36&quot;;
+contra[1] = &quot;0.17&quot;;
+ebf[1] = &quot;0.36&quot;;
+vacc[1] = &quot;0.38&quot;;
+anc1lo[1] = &quot;0.70&quot;;
+tetlo[1] = &quot;0.63&quot;;
+anc4lo[1] = &quot;0.54&quot;;
+ifdlo[1] = &quot;0.38&quot;;
+bf24lo[1] = &quot;0.70&quot;;
+pnc48lo[1] = &quot;0.20&quot;;
+pnc7lo[1] = &quot;0.33&quot;;
+contralo[1] = &quot;0.16&quot;;
+ebflo[1] = &quot;0.34&quot;;
+vacclo[1] = &quot;0.36&quot;;
+anc1lodiff[1] = &quot;0.02&quot;;
+tetlodiff[1] = &quot;0.02&quot;;
+anc4lodiff[1] = &quot;0.02&quot;;
+ifdlodiff[1] = &quot;0.02&quot;;
+bf24lodiff[1] = &quot;0.02&quot;;
+pnc48lodiff[1] = &quot;0.02&quot;;
+pnc7lodiff[1] = &quot;0.02&quot;;
+contralodiff[1] = &quot;0.02&quot;;
+ebflodiff[1] = &quot;0.02&quot;;
+vacclodiff[1] = &quot;0.02&quot;;
+anc1hi[1] = &quot;0.75&quot;;
+tethi[1] = &quot;0.67&quot;;
+anc4hi[1] = &quot;0.58&quot;;
+ifdhi[1] = &quot;0.43&quot;;
+bf24hi[1] = &quot;0.74&quot;;
+pnc48hi[1] = &quot;0.24&quot;;
+pnc7hi[1] = &quot;0.38&quot;;
+contrahi[1] = &quot;0.20&quot;;
+ebfhi[1] = &quot;0.39&quot;;
+vacchi[1] = &quot;0.41&quot;;
+anc1hidiff[1] = &quot;0.02&quot;;
+tethidiff[1] = &quot;0.02&quot;;
+anc4hidiff[1] = &quot;0.02&quot;;
+ifdhidiff[1] = &quot;0.02&quot;;
+bf24hidiff[1] = &quot;0.02&quot;;
+pnc48hidiff[1] = &quot;0.02&quot;;
+pnc7hidiff[1] = &quot;0.02&quot;;
+contrahidiff[1] = &quot;0.02&quot;;
+ebfhidiff[1] = &quot;0.02&quot;;
+vacchidiff[1] = &quot;0.02&quot;;
+
+Col0[2] = &quot;Secondary school (N=830)&quot;;
+anc1[2] = &quot;0.84&quot;;
+tet[2] = &quot;0.75&quot;;
+anc4[2] = &quot;0.71&quot;;
+ifd[2] = &quot;0.63&quot;;
+bf24[2] = &quot;0.69&quot;;
+pnc48[2] = &quot;0.32&quot;;
+pnc7[2] = &quot;0.44&quot;;
+contra[2] = &quot;0.25&quot;;
+ebf[2] = &quot;0.31&quot;;
+vacc[2] = &quot;0.47&quot;;
+anc1lo[2] = &quot;0.82&quot;;
+tetlo[2] = &quot;0.72&quot;;
+anc4lo[2] = &quot;0.67&quot;;
+ifdlo[2] = &quot;0.60&quot;;
+bf24lo[2] = &quot;0.66&quot;;
+pnc48lo[2] = &quot;0.29&quot;;
+pnc7lo[2] = &quot;0.40&quot;;
+contralo[2] = &quot;0.22&quot;;
+ebflo[2] = &quot;0.27&quot;;
+vacclo[2] = &quot;0.43&quot;;
+anc1lodiff[2] = &quot;0.03&quot;;
+tetlodiff[2] = &quot;0.03&quot;;
+anc4lodiff[2] = &quot;0.03&quot;;
+ifdlodiff[2] = &quot;0.03&quot;;
+bf24lodiff[2] = &quot;0.03&quot;;
+pnc48lodiff[2] = &quot;0.03&quot;;
+pnc7lodiff[2] = &quot;0.04&quot;;
+contralodiff[2] = &quot;0.03&quot;;
+ebflodiff[2] = &quot;0.03&quot;;
+vacclodiff[2] = &quot;0.04&quot;;
+anc1hi[2] = &quot;0.87&quot;;
+tethi[2] = &quot;0.78&quot;;
+anc4hi[2] = &quot;0.74&quot;;
+ifdhi[2] = &quot;0.67&quot;;
+bf24hi[2] = &quot;0.73&quot;;
+pnc48hi[2] = &quot;0.36&quot;;
+pnc7hi[2] = &quot;0.47&quot;;
+contrahi[2] = &quot;0.29&quot;;
+ebfhi[2] = &quot;0.34&quot;;
+vacchi[2] = &quot;0.50&quot;;
+anc1hidiff[2] = &quot;0.02&quot;;
+tethidiff[2] = &quot;0.03&quot;;
+anc4hidiff[2] = &quot;0.03&quot;;
+ifdhidiff[2] = &quot;0.03&quot;;
+bf24hidiff[2] = &quot;0.03&quot;;
+pnc48hidiff[2] = &quot;0.03&quot;;
+pnc7hidiff[2] = &quot;0.04&quot;;
+contrahidiff[2] = &quot;0.04&quot;;
+ebfhidiff[2] = &quot;0.04&quot;;
+vacchidiff[2] = &quot;0.04&quot;;
+
+Col0[3] = &quot;Preparatory school or higher (N=528)&quot;;
+anc1[3] = &quot;0.91&quot;;
+tet[3] = &quot;0.82&quot;;
+anc4[3] = &quot;0.83&quot;;
+ifd[3] = &quot;0.85&quot;;
+bf24[3] = &quot;0.61&quot;;
+pnc48[3] = &quot;0.42&quot;;
+pnc7[3] = &quot;0.55&quot;;
+contra[3] = &quot;0.32&quot;;
+ebf[3] = &quot;0.21&quot;;
+vacc[3] = &quot;0.49&quot;;
+anc1lo[3] = &quot;0.89&quot;;
+tetlo[3] = &quot;0.78&quot;;
+anc4lo[3] = &quot;0.80&quot;;
+ifdlo[3] = &quot;0.82&quot;;
+bf24lo[3] = &quot;0.57&quot;;
+pnc48lo[3] = &quot;0.38&quot;;
+pnc7lo[3] = &quot;0.51&quot;;
+contralo[3] = &quot;0.28&quot;;
+ebflo[3] = &quot;0.17&quot;;
+vacclo[3] = &quot;0.44&quot;;
+anc1lodiff[3] = &quot;0.03&quot;;
+tetlodiff[3] = &quot;0.04&quot;;
+anc4lodiff[3] = &quot;0.03&quot;;
+ifdlodiff[3] = &quot;0.03&quot;;
+bf24lodiff[3] = &quot;0.04&quot;;
+pnc48lodiff[3] = &quot;0.04&quot;;
+pnc7lodiff[3] = &quot;0.05&quot;;
+contralodiff[3] = &quot;0.05&quot;;
+ebflodiff[3] = &quot;0.04&quot;;
+vacclodiff[3] = &quot;0.05&quot;;
+anc1hi[3] = &quot;0.94&quot;;
+tethi[3] = &quot;0.85&quot;;
+anc4hi[3] = &quot;0.86&quot;;
+ifdhi[3] = &quot;0.88&quot;;
+bf24hi[3] = &quot;0.65&quot;;
+pnc48hi[3] = &quot;0.47&quot;;
+pnc7hi[3] = &quot;0.60&quot;;
+contrahi[3] = &quot;0.37&quot;;
+ebfhi[3] = &quot;0.25&quot;;
+vacchi[3] = &quot;0.54&quot;;
+anc1hidiff[3] = &quot;0.02&quot;;
+tethidiff[3] = &quot;0.03&quot;;
+anc4hidiff[3] = &quot;0.03&quot;;
+ifdhidiff[3] = &quot;0.03&quot;;
+bf24hidiff[3] = &quot;0.04&quot;;
+pnc48hidiff[3] = &quot;0.05&quot;;
+pnc7hidiff[3] = &quot;0.04&quot;;
+contrahidiff[3] = &quot;0.05&quot;;
+ebfhidiff[3] = &quot;0.04&quot;;
+vacchidiff[3] = &quot;0.05&quot;;
+
+
 </pre>
 </div>
 </div>
@@ -1426,37 +1624,116 @@ set();
 </div>
 </section>
 <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Code exercise based on the .js styles you came up with on Friday</h2>
+<ul>
+<li>Use Mari's data.js instead of the data I included in the horizontal bar chart</li>
+</ul>
+<h2>Include it with:</h2>
+<pre><code>&lt;script src="../../../projects/mari/data.js"&gt;&lt;/script&gt;
+</code></pre>
+</div>
+<div style=display:none class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># another good exercise example, especially combined with d3 filter method</span>
+<span class="o">!</span>head -30 Anthony/nha_clean_maclearning.js
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>var dataset = 
+
+
+[
+  {
+    &quot;iso3&quot;:&quot;AFG&quot;,
+    &quot;time&quot;:&quot;2006-2010&quot;,
+    &quot;typology&quot;:&quot;Health Provider&quot;,
+    &quot;item&quot;:&quot;Ambulatory care&quot;,
+    &quot;fraction&quot;:0.31697268
+  },
+  {
+    &quot;iso3&quot;:&quot;AFG&quot;,
+    &quot;time&quot;:&quot;2006-2010&quot;,
+    &quot;typology&quot;:&quot;Health Provider&quot;,
+    &quot;item&quot;:&quot;Health administration and insurance&quot;,
+    &quot;fraction&quot;:0.05623081
+  },
+  {
+    &quot;iso3&quot;:&quot;AFG&quot;,
+    &quot;time&quot;:&quot;2006-2010&quot;,
+    &quot;typology&quot;:&quot;Health Provider&quot;,
+    &quot;item&quot;:&quot;Hospitals&quot;,
+    &quot;fraction&quot;:0.29330885
+  },
+  {
+    &quot;iso3&quot;:&quot;AFG&quot;,
+    &quot;time&quot;:&quot;2006-2010&quot;,
+    &quot;typology&quot;:&quot;Health Provider&quot;,
+    &quot;item&quot;:&quot;Not specified by kind&quot;,
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Code:</h2>
-<pre><code>var r = d3.select("svg")
-    .selectAll("rect")
-    .data(data);
-</code></pre>
+<h2>Visualization and the blind</h2>
+<ul>
+<li>Why spend so much time on animation when today's focus in accessibility?</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2><a href="http://www.audiodescribe.com/samples/">Audio description examples</a></h2>
+</div>
+</section>
+<section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Text equivalent example from <a href="http://www.w3.org/TR/WAI-WEBCONTENT/">WCG</a></h2>
+<h2>Consider a photographic image of the Earth as seen from outer space.</h2>
+<ul>
+<li>If the purpose of the image is mostly that of decoration, then the text "Photograph of the Earth as seen from outer space" might fulfill the necessary function. </li>
+<li>If the purpose of the photograph is to illustrate specific information about world geography, then the text equivalent should convey that information. </li>
+</ul>
 </div>
 </section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>r.enter()
-    .append("rect")
-    .attr("x", 10)
-    .attr("y", 10)
-    .attr("width", 100)
-    .attr("height", 10);
-</code></pre>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<pre><code>r.attr("y", function(d,i) {
-        return i*20; })
-    .attr("width", function(d) {
-        return d*100; });
-</code></pre>
+<h2>(cont)</h2>
+<ul>
+<li>If the photograph has been designed to tell the user to select the image (e.g., by clicking on it) for information about the earth, equivalent text would be "Information about the Earth".</li>
+</ul>
+<h2>Thus, if the text conveys the same function or purpose for the user with a disability as the image does for other users, then it can be considered a text equivalent.</h2>
 </div>
 </section>
 </section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Example text description (TK)</h2>
+<h2>Screen readers</h2>
+<ul>
+<li>For example, <a href="http://www.nvaccess.org/">NVDA</a></li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Making a table accessible to a screen reader</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Slow internet connections are also part of <em>accessibility</em></h2>
 </div>
 </section>
 <section>
@@ -1466,701 +1743,66 @@ set();
 </section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Start with a dot</h2>
-<pre><code>dot = d3.select("svg")
-    .append("circle")
-    .attr({r:25, cx: 30, cy: 30});
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Can you animate moving the dot 300 pixels?</h2>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1>A Solution</h1>
-<pre><code>dot.transition()
-    .attr("cx", 330)
-    .duration(1000)
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>What do you think this does?</h2>
-<pre><code>dot.transition()
-    .attr("cx", 30)
-    .duration(1000)
-    .ease("linear")
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>What other <code>ease</code> options are there?  Got a fav?</h2>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>What will this do then?</h2>
-<pre><code>dot.transition()
-    .attr("fill", "red")
-    .duration(2000)
-    .ease("bounce")
-</code></pre>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>But to focus on motion, have a <a href="http://mbostock.github.io/d3/talk/20111116/#11">look at this</a>!</h2>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>How is that possible?</h2>
+<h2>Homework</h2>
 <ul>
-<li>See if you can figure out from <a href="https://github.com/mbostock/d3/wiki/Transitions">the docs</a>.</li>
+<li>Critique and collaborate draft IDV with partner(s)</li>
 </ul>
 </div>
 </section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>A solution? <a href="https://github.com/mbostock/d3/wiki/Transitions#wiki-tween"><code>transition.tween</code></a></h2>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Now an example (not an exercise).</h2>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Network diagrams</h2>
+<h2>Remember order of importance for critique:</h2>
 <ul>
-<li><a href="http://www.yasiv.com/amazon#/Search?q=d3&amp;category=Books&amp;lang=US">Cool Amazon Book Browser</a></li>
-<li><a href="https://immersion.media.mit.edu">Creepy GMail explorer</a>                             </li>
+<li>Conceptual (What are its goals and does it accomplish them?)</li>
+<li>Aesthetic (Overall appeal, objects, iconography, contrast, value, size, positioning, hierarchy, consistency, ...)</li>
+<li>Technical</li>
 </ul>
 </div>
 </section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>For us today:</h2>
-<pre><code>...
-d3.layout.force(...)
-...
-</code></pre>
-<p><a href="html/05_networks/05_networks_01.html">show results</a></p>
+<h2>Reading</h2>
+<ul>
+<li>S. Murray, <em>IDV4W</em>, Ch <a href="http://chimera.labs.oreilly.com/books/1230000000345/ch09.html">9</a>;</li>
+<li><a href="http://gameaccessibilityguidelines.com/">Game Accessibility Guidelines</a>.</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Network Diagram Examples</h2>
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight"><pre><span class="o">!</span>cp /homes/abie/notebook/2013_07_12_IDV4GH_L5.ipynb /homes/abie/nbconvert/L5.ipynb
+<span class="o">!</span><span class="nb">cd</span> /homes/abie/nbconvert/; ./nbconvert.py --format reveal L5.ipynb
+<span class="o">!</span>cp /homes/abie/nbconvert/L5* /home/j/Project/Models/IDV4GH/lectures/
 </pre></div>
 
 </div>
 </div>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;html/05_networks/net_data.js&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;var data=</span><span class="si">%s</span><span class="s">;&quot;</span> <span class="o">%</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks_01</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">path</span><span class="o">.</span><span class="n">link</span> <span class="p">{</span>
-  <span class="n">fill</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
-  <span class="n">stroke</span><span class="p">:</span> <span class="c">#333;</span>
-  <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mf">1.2</span><span class="n">px</span><span class="p">;</span>
-  <span class="n">opacity</span><span class="p">:</span> <span class="o">.</span><span class="mi">3</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">marker</span> <span class="p">{</span>
-  <span class="n">fill</span><span class="p">:</span> <span class="c">#333;</span>
-  <span class="n">stroke</span><span class="p">:</span> <span class="c">#fff;</span>
-  <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mf">1.5</span><span class="n">px</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">circle</span> <span class="p">{</span>
-  <span class="o">//</span><span class="n">fill</span><span class="p">:</span> <span class="c">#111;</span>
-  <span class="n">stroke</span><span class="p">:</span> <span class="c">#fff;</span>
-  <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mf">1.5</span><span class="n">px</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">text</span> <span class="p">{</span>
-  <span class="n">fill</span><span class="p">:</span> <span class="c">#222;</span>
-  <span class="n">font</span><span class="p">:</span> <span class="mi">10</span><span class="n">px</span> <span class="n">sans</span><span class="o">-</span><span class="n">serif</span><span class="p">;</span>
-  <span class="n">pointer</span><span class="o">-</span><span class="n">events</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Force</span><span class="o">-</span><span class="n">directed</span> <span class="n">network</span> <span class="n">layout</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;net_data.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-
-<span class="o">//</span> <span class="n">Add</span> <span class="n">SVG</span> <span class="n">that</span> <span class="n">will</span> <span class="n">hold</span> <span class="n">figure</span>
-<span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">nodes</span> <span class="o">=</span> <span class="p">{},</span>
-    <span class="n">links</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">edge_list</span><span class="p">;</span>
-
-<span class="n">data</span><span class="o">.</span><span class="n">node_list</span><span class="o">.</span><span class="n">forEach</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">md1_frac</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">md1_frac</span><span class="p">};</span>
-<span class="p">});</span>
-
-<span class="n">links</span><span class="o">.</span><span class="n">forEach</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">link</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">link</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">link</span><span class="o">.</span><span class="n">source</span><span class="p">];</span>
-    <span class="n">link</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">link</span><span class="o">.</span><span class="n">target</span><span class="p">]</span> <span class="o">||</span> 
-        <span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">link</span><span class="o">.</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">link</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">link</span><span class="o">.</span><span class="n">color</span><span class="p">});</span>
-    <span class="n">link</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="o">+</span><span class="n">link</span><span class="o">.</span><span class="n">value</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="n">var</span> <span class="n">force</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">force</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">d3</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">links</span><span class="p">(</span><span class="n">links</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">size</span><span class="p">([</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">linkDistance</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">charge</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">friction</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;tick&quot;</span><span class="p">,</span> <span class="n">tick</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">start</span><span class="p">();</span>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>
+======================================================
+Warning, we are deprecating this version of nbconvert,
+please consider using the new version.
+======================================================
     
-<span class="o">//</span> <span class="n">build</span> <span class="n">the</span> <span class="n">arrow</span><span class="o">.</span>
-<span class="n">svg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg:defs&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;marker&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;end&quot;</span><span class="p">])</span>      <span class="o">//</span> <span class="n">Different</span> <span class="n">link</span><span class="o">/</span><span class="n">path</span> <span class="n">types</span> <span class="n">can</span> <span class="n">be</span> <span class="n">defined</span> <span class="n">here</span>
-  <span class="o">.</span><span class="n">enter</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg:marker&quot;</span><span class="p">)</span>    <span class="o">//</span> <span class="n">This</span> <span class="n">section</span> <span class="n">adds</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">arrows</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;viewBox&quot;</span><span class="p">,</span> <span class="s">&quot;0 -5 10 10&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;refX&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;refY&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;markerWidth&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;markerHeight&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;orient&quot;</span><span class="p">,</span> <span class="s">&quot;auto&quot;</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg:path&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;M0,-5L10,0L0,5&quot;</span><span class="p">);</span>
-
-<span class="o">//</span> <span class="n">add</span> <span class="n">the</span> <span class="n">links</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">arrows</span>
-<span class="n">var</span> <span class="n">path</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg:g&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">force</span><span class="o">.</span><span class="n">links</span><span class="p">())</span>
-  <span class="o">.</span><span class="n">enter</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg:path&quot;</span><span class="p">)</span>
-<span class="o">//</span>    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;link &quot;</span> <span class="o">+</span> <span class="n">d</span><span class="o">.</span><span class="n">type</span><span class="p">;</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;link&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;marker-end&quot;</span><span class="p">,</span> <span class="s">&quot;url(#end)&quot;</span><span class="p">);</span>
-
-<span class="o">//</span> <span class="n">define</span> <span class="n">the</span> <span class="n">nodes</span>
-<span class="n">var</span> <span class="n">node</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;.node&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">force</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
-  <span class="o">.</span><span class="n">enter</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;node&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">force</span><span class="o">.</span><span class="n">drag</span><span class="p">);</span>
-
-<span class="o">//</span> <span class="n">add</span> <span class="n">the</span> <span class="n">nodes</span>
-<span class="n">node</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">color</span><span class="p">;</span> <span class="p">});</span>
-
-<span class="o">//</span> <span class="n">add</span> <span class="n">the</span> <span class="n">text</span> 
-<span class="n">node</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;dy&quot;</span><span class="p">,</span> <span class="s">&quot;.35em&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">md1_frac</span><span class="p">;</span> <span class="p">});</span>
-
-<span class="o">//</span> <span class="n">add</span> <span class="n">the</span> <span class="n">curvy</span> <span class="n">lines</span>
-<span class="n">function</span> <span class="n">tick</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">path</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">var</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-            <span class="n">dy</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-            <span class="n">dr</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
-        <span class="k">return</span> <span class="s">&quot;M&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="s">&quot;A&quot;</span> <span class="o">+</span> 
-            <span class="n">dr</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="n">dr</span> <span class="o">+</span> <span class="s">&quot; 0 0,1 &quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
-    <span class="p">});</span>
-
-    <span class="n">node</span>
-        <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;transform&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="k">return</span> <span class="s">&quot;translate(&quot;</span> <span class="o">+</span> <span class="n">d</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="n">d</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">;</span> <span class="p">});</span>
-<span class="p">}</span>
-
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/05_networks/05_networks_01.html
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>What first?</h2>
-</div>
-</section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>A minimal example</h2>
-<p>Based on Chapter 11 of <em>Interactive data visualization for the web</em>.</p>
-<p><a href="html/05_networks/05_networks_02.html">show results</a></p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks_02</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Force</span><span class="o">-</span><span class="n">directed</span> <span class="n">network</span> <span class="n">layout</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">nodes</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Adam&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Carrie&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Donovan&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Edward&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Felicity&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;George&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Hannah&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Iris&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Jerry&quot;</span> <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="n">edges</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">3</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">9</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">7</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">9</span> <span class="p">}</span>
-        <span class="p">]</span>
-<span class="p">};</span>
-
-<span class="o">//</span> <span class="n">Add</span> <span class="n">SVG</span> <span class="n">that</span> <span class="n">will</span> <span class="n">hold</span> <span class="n">figure</span>
-<span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-
-
-<span class="n">var</span> <span class="n">force</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">force</span><span class="p">()</span>
-                     <span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-                     <span class="o">.</span><span class="n">links</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-                     <span class="o">.</span><span class="n">size</span><span class="p">([</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">linkDistance</span><span class="p">([</span><span class="mi">50</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">charge</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">start</span><span class="p">();</span>
-
-<span class="n">var</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">category10</span><span class="p">();</span>
-
-<span class="n">var</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;line&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;line&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="s">&quot;stroke&quot;</span><span class="p">,</span> <span class="s">&quot;#ccc&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="s">&quot;stroke-width&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">colors</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-        <span class="p">})</span>
-        <span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">force</span><span class="o">.</span><span class="n">drag</span><span class="p">);</span>
-
-<span class="n">force</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;tick&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
-
-<span class="n">edges</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x1&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">x</span><span class="p">;</span> <span class="p">})</span>
-     <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y1&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">y</span><span class="p">;</span> <span class="p">})</span>
-     <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x2&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">x</span><span class="p">;</span> <span class="p">})</span>
-     <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y2&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">y</span><span class="p">;</span> <span class="p">});</span>
-
-<span class="n">nodes</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;cx&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">x</span><span class="p">;</span> <span class="p">})</span>
-     <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;cy&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">y</span><span class="p">;</span> <span class="p">});</span>
-
-<span class="p">});</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/05_networks/05_networks_02.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>How is this different?</h2>
-<p><a href="html/05_networks/05_networks_03a.html">show results</a></p>
-</div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks_03a</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">path</span><span class="o">.</span><span class="n">link</span> <span class="p">{</span>
-  <span class="n">fill</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
-  <span class="n">stroke</span><span class="p">:</span> <span class="c">#000;</span>
-  <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span><span class="p">;</span>
-  <span class="n">opacity</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">marker</span> <span class="p">{</span>
-  <span class="n">fill</span><span class="p">:</span> <span class="c">#333;</span>
-  <span class="n">stroke</span><span class="p">:</span> <span class="c">#fff;</span>
-  <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mf">1.5</span><span class="n">px</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Force</span><span class="o">-</span><span class="n">directed</span> <span class="n">network</span> <span class="n">layout</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">nodes</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Adam&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Carrie&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Donovan&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Edward&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Felicity&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;George&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Hannah&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Iris&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Jerry&quot;</span> <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="n">edges</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">3</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">9</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">7</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">9</span> <span class="p">}</span>
-        <span class="p">]</span>
-<span class="p">};</span>
-
-<span class="o">//</span> <span class="n">Add</span> <span class="n">SVG</span> <span class="n">that</span> <span class="n">will</span> <span class="n">hold</span> <span class="n">figure</span>
-<span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">force</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">force</span><span class="p">()</span>
-                     <span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-                     <span class="o">.</span><span class="n">links</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-                     <span class="o">.</span><span class="n">size</span><span class="p">([</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">linkDistance</span><span class="p">([</span><span class="mi">50</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">charge</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">start</span><span class="p">();</span>
-
-<span class="n">var</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">category10</span><span class="p">();</span>
-
-
-<span class="o">//</span> <span class="n">build</span> <span class="n">the</span> <span class="n">arrow</span><span class="o">.</span>
-<span class="n">svg</span> <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;defs&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;marker&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">([</span><span class="s">&quot;end&quot;</span><span class="p">])</span>      <span class="o">//</span> <span class="n">Different</span> <span class="n">link</span><span class="o">/</span><span class="n">path</span> <span class="n">types</span> <span class="n">can</span> <span class="n">be</span> <span class="n">defined</span> <span class="n">here</span>
-  <span class="o">.</span><span class="n">enter</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;marker&quot;</span><span class="p">)</span>    <span class="o">//</span> <span class="n">This</span> <span class="n">section</span> <span class="n">adds</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">arrows</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;viewBox&quot;</span><span class="p">,</span> <span class="s">&quot;0 -5 10 10&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;refX&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;refY&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;markerWidth&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;markerHeight&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;orient&quot;</span><span class="p">,</span> <span class="s">&quot;auto&quot;</span><span class="p">)</span>
-  <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;M0,-5L10,0L0,5&quot;</span><span class="p">);</span>
-    
-<span class="n">var</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;link&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;marker-end&quot;</span><span class="p">,</span> <span class="s">&quot;url(#end)&quot;</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">colors</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-        <span class="p">})</span>
-        <span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">force</span><span class="o">.</span><span class="n">drag</span><span class="p">);</span>
-
-<span class="n">force</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;tick&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">edges</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">var</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-            <span class="n">dy</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-            <span class="n">dr</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
-        <span class="k">return</span> <span class="s">&quot;M&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="s">&quot;L&quot;</span> <span class="o">+</span>
-            <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
-    <span class="p">});</span>
-
-<span class="n">nodes</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;cx&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">x</span><span class="p">;</span> <span class="p">})</span>
-     <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;cy&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">y</span><span class="p">;</span> <span class="p">});</span>
-
-<span class="p">});</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/05_networks/05_networks_03a.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Make the edges curvy, so bidirected links look extra pretty</h2>
-<p><a href="html/05_networks/05_networks_03b.html">show results</a></p>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks</span><span class="o">/</span><span class="mo">05</span><span class="n">_networks_03b</span><span class="o">.</span><span class="n">html</span>
-
-<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
-<span class="n">path</span><span class="o">.</span><span class="n">link</span> <span class="p">{</span>
-  <span class="n">fill</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
-  <span class="n">stroke</span><span class="p">:</span> <span class="c">#000;</span>
-  <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span><span class="p">;</span>
-  <span class="n">opacity</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Force</span><span class="o">-</span><span class="n">directed</span> <span class="n">network</span> <span class="n">layout</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="n">var</span> <span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">nodes</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Adam&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Carrie&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Donovan&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Edward&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Felicity&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;George&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Hannah&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Iris&quot;</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;Jerry&quot;</span> <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="n">edges</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">3</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">9</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">7</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
-                <span class="p">{</span> <span class="n">source</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="mi">9</span> <span class="p">}</span>
-        <span class="p">]</span>
-<span class="p">};</span>
-
-<span class="o">//</span> <span class="n">Add</span> <span class="n">SVG</span> <span class="n">that</span> <span class="n">will</span> <span class="n">hold</span> <span class="n">figure</span>
-<span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">);</span>
-
-
-<span class="n">var</span> <span class="n">force</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">force</span><span class="p">()</span>
-                     <span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-                     <span class="o">.</span><span class="n">links</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-                     <span class="o">.</span><span class="n">size</span><span class="p">([</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">linkDistance</span><span class="p">([</span><span class="mi">50</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">charge</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">])</span>
-                     <span class="o">.</span><span class="n">start</span><span class="p">();</span>
-
-<span class="n">var</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">category10</span><span class="p">();</span>
-
-<span class="n">var</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;g&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">enter</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;link&quot;</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="n">colors</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-        <span class="p">})</span>
-        <span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">force</span><span class="o">.</span><span class="n">drag</span><span class="p">);</span>
-
-<span class="n">force</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&quot;tick&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="n">edges</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">var</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-            <span class="n">dy</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-            <span class="n">dr</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
-        <span class="k">return</span> <span class="s">&quot;M&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="s">&quot;A&quot;</span> <span class="o">+</span> 
-            <span class="n">dr</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="n">dr</span> <span class="o">+</span> <span class="s">&quot; 0 0,1 &quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> 
-            <span class="n">d</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
-    <span class="p">});</span>
-
-<span class="n">nodes</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;cx&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">x</span><span class="p">;</span> <span class="p">})</span>
-     <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;cy&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">y</span><span class="p">;</span> <span class="p">});</span>
-
-<span class="p">});</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-<div class="vbox output_wrapper">
-<div class="output vbox">
-<div class="hbox output_area">
-<div class="prompt output_prompt"></div>
-<div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/05_networks/05_networks_03b.html
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Things to consider adding:</h2>
-<ul>
-<li>Zoom;</li>
-<li>Filter;</li>
-<li>Details-on-demand.</li>
-</ul>
-</div>
-</section>
-<section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2>Tomorrow: geographic mapping!</h2>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[*]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">!</span>cp /homes/abie/notebook/2013_07_06_IDV4GH_Exercise_05_force_layout_networks.ipynb /homes/abie/nbconvert/E5.ipynb
-<span class="o">!</span><span class="nb">cd</span> /homes/abie/nbconvert/; ./nbconvert.py --format reveal E5.ipynb
-<span class="o">!</span>cp /homes/abie/nbconvert/E5* /home/j/Project/Models/IDV4GH/exercises
-<span class="o">!</span>cp -r /homes/abie/notebook/html/05_networks/ /home/j/Project/Models/IDV4GH/exercises/html/
-</pre></div>
-
-</div>
-</div>
-</div>
-<div style=display:none class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">ipynb_style</span>
 <span class="n">ipynb_style</span><span class="o">.</span><span class="n">presentation</span><span class="p">()</span>
@@ -2171,7 +1813,7 @@ d3.layout.force(...)
 <div class="vbox output_wrapper">
 <div class="output vbox">
 <div class="hbox output_area">
-<div class="prompt output_prompt">Out[36]:</div>
+<div class="prompt output_prompt">Out[1]:</div>
 <div class="output_subarea output_pyout output_html rendered_html">
 
 <style type="text/css">
