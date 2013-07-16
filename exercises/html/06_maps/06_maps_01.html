@@ -25,46 +25,4 @@ var svg = d3.select("body")
             .append("svg")
             .attr("width", width)
             .attr("height", height);
-
-// Define default path generator
-var projection = d3.geo.albersUsa()
-    .translate([width/2, height/2])
-    .scale([200]);
-var path = d3.geo.path()
-    .projection(projection);
-
-// Add random colors
-var color = d3.scale.quantize()
-    .range(["rgb(237,248,233)", "rgb(186,228,179)",
-        "rgb(116,196,118)", "rgb(49,163,84)","rgb(0,109,44)"])
-    .domain([0,1]);
-    
-json.features
-    .forEach(function (d) {
-        d.properties.value = Math.random(); })
-
-// Draw map
-svg .selectAll("path")
-    .data(json.features)
-    .enter()
-  .append("path")
-    .attr("d", path)
-    .attr("class", "state")
-    .style("fill", function (d) {
-        return color(d.properties.value); });
-
-// Add zoom interaction
-var zoom = d3.behavior.zoom()
-        .translate(projection.translate())
-        .scale(projection.scale())
-        .on("zoom", move);
-d3.select("svg").call(zoom);
-
-function move() {
-    projection
-        .translate(d3.event.translate)
-        .scale(d3.event.scale);
-    svg.selectAll("path").attr("d", path);
-}
-
 </script>

@@ -1195,7 +1195,7 @@ div.output_prompt {
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1>IDV4GH Exercise 6</h1>
-<h2>Maps</h2>
+<h2>Maps (and more)</h2>
 </div>
 </section>
 <section>
@@ -1254,10 +1254,226 @@ div.output_prompt {
 </div>
 </div>
 </div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Javascript exercise</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>"Recall" the following:</h2>
+<pre><code>var a = [1,2,3]; // an array
+var b = {1:1, 2:2, 3:3}; // a dict
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>What will this do?</h2>
+<pre><code>console.log(a[0]);
+</code></pre>
+<h2>What about this?</h2>
+<pre><code>console.log(b[0]);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>What will this do?</h2>
+<pre><code>a[1]*10;
+</code></pre>
+<h2>And this?</h2>
+<pre><code>b[1]*10;
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Javascript functions</h2>
+<pre><code>var mult2 = function(d) {
+    return d*2;
+}
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>What does this do?</h2>
+<pre><code>mult2(17);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>And can you guess what this does?</h2>
+<pre><code>a.map(mult2);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>This is "functional programming"</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Let's do some more:</h2>
+<pre><code>var multX = function(x) {
+    return function(d) {
+        return x*d;
+    }
+}
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>What do you think this does?</h2>
+<pre><code>var m3 = multX(3);
+m3(17);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Think of functions as <em>objects</em></h2>
+<h2>And think of <em>objects</em> as dicts</h2>
+<pre><code>m3.description = "Multiply by three";
+m3.description;
+m3["description"];
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Back to our theoretical content</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Loading a CSV with D3</h2>
+<pre><code>d3.csv(url, function(data) {
+    // use data })
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Simple, right?  But you need a webserver for it to work.</h2>
+<pre><code>python -m SimpleHTTPServer 8000
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Make a csv, store it as <code>data.csv</code> your project folder on the J drive</h2>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">5</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;value&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out[63]:</div>
+<div class="output_subarea output_pyout output_html rendered_html">
+<div style="max-height:1000px;max-width:1500px;overflow:auto;">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td> 3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td> 1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td> 4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td> 1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td> 5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style=display:none class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">5</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;value&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">&quot;/home/j/Project/Models/IDV4GH/test.csv&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Make <code>csv_skeleton.html</code> in your project folder</h2>
+<h2>Start with trusty old skeleton</h2>
+<h2>Add to it:</h2>
+<pre><code>d3.csv("data.csv", function(data) {
+    console.log(data); })
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Where is that data?</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Copy it into a local for debugging and development</h2>
+<pre><code>var dataset = [];
+d3.csv("data.csv", function(data) {
+    dataset = data; })
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Was I right about that being annoying?  Maybe it doesn't matter if all examples follow the pattern.</h2>
+<h2>In case I was, I have made a conversion script for you:</h2>
+<pre><code>cd /home/j/Project/Models/IDV4GH/
+./csv_to_js.py test.csv
+head test.js
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Now, on to a geomapping example in d3</h2>
+</div>
 <div style=display:none class="text_cell_render border-box-sizing rendered_html">
 <p>Get some geojson data and stick it in a js file, to continue to avoid needing a webserver.</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
+<div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="input_area box-flex1">
@@ -1281,11 +1497,160 @@ div.output_prompt {
 </div>
 </div>
 </div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>I've prepared a map of US states, by moving IDV4W data into a .js file</h2>
+<pre><code>&lt;script src="us_states.js"&gt;&lt;/script&gt;
+</code></pre>
+<p><a href="html/06_maps/06_maps_01.html">show results</a></p>
+</div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps_01</span><span class="o">.</span><span class="n">html</span>
+
+<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
+<span class="o">.</span><span class="n">state</span> <span class="p">{</span>
+    <span class="n">stroke</span><span class="p">:</span> <span class="n">white</span><span class="p">;</span>
+    <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">fill</span><span class="p">:</span> <span class="n">grey</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Maps</span><span class="err">!</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;us_states.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">//</span> <span class="n">Width</span> <span class="ow">and</span> <span class="n">height</span>
+<span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Create</span> <span class="n">SVG</span> <span class="n">element</span>
+<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>Overwriting html/06_maps/06_maps_01.html
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Converting the GeoJson data to SVG is easy with D3:</h2>
+<pre><code>// Define default path generator
+var projection = d3.geo.albersUsa()
+    .translate([width/2, height/2])
+    .scale([200]);
+var path = d3.geo.path()
+    .projection(projection);
+</code></pre>
+<p><a href="html/06_maps/06_maps_02.html">show results</a></p>
+</div>
+<div style=display:none class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps_02</span><span class="o">.</span><span class="n">html</span>
+
+<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
+<span class="o">.</span><span class="n">state</span> <span class="p">{</span>
+    <span class="n">stroke</span><span class="p">:</span> <span class="n">white</span><span class="p">;</span>
+    <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="p">:</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">fill</span><span class="p">:</span> <span class="n">grey</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Maps</span><span class="err">!</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;us_states.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">//</span> <span class="n">Width</span> <span class="ow">and</span> <span class="n">height</span>
+<span class="n">var</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Create</span> <span class="n">SVG</span> <span class="n">element</span>
+<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">Define</span> <span class="n">default</span> <span class="n">path</span> <span class="n">generator</span>
+<span class="n">var</span> <span class="n">projection</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">albersUsa</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">scale</span><span class="p">([</span><span class="mi">200</span><span class="p">]);</span>
+<span class="n">var</span> <span class="n">path</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">path</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">projection</span><span class="p">(</span><span class="n">projection</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">Draw</span> <span class="nb">map</span>
+<span class="n">svg</span> <span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
+  <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;state&quot;</span><span class="p">);</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>Overwriting html/06_maps/06_maps_02.html
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Add colors mapped from (random) data</h2>
+<pre><code>// Add random colors
+var color = d3.scale.quantize()
+    .range(["rgb(237,248,233)", "rgb(186,228,179)",
+        "rgb(116,196,118)", "rgb(49,163,84)","rgb(0,109,44)"])
+    .domain([0,1]);
+
+json.features
+    .forEach(function (d) {
+        d.properties.value = Math.random(); })
+</code></pre>
+<p><a href="html/06_maps/06_maps_03.html">show results</a></p>
+</div>
+<div style=display:none class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps_03</span><span class="o">.</span><span class="n">html</span>
 
 <span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
@@ -1365,18 +1730,18 @@ div.output_prompt {
 <div class="hbox output_area">
 <div class="prompt output_prompt"></div>
 <div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/06_maps/06_maps_01.html
+<pre>Writing html/06_maps/06_maps_03.html
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
+<div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps_02</span><span class="o">.</span><span class="n">html</span>
+<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps</span><span class="o">/</span><span class="mo">06</span><span class="n">_maps_04</span><span class="o">.</span><span class="n">html</span>
 
 <span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
@@ -1457,7 +1822,7 @@ div.output_prompt {
 <div class="hbox output_area">
 <div class="prompt output_prompt"></div>
 <div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/06_maps/06_maps_02.html
+<pre>Writing html/06_maps/06_maps_04.html
 </pre>
 </div>
 </div>
@@ -1471,7 +1836,7 @@ div.output_prompt {
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">!</span>cp /homes/abie/notebook/2013_07_06b_IDV4GH_Exercise_06_maps.ipynb /homes/abie/nbconvert/E6.ipynb
 <span class="o">!</span><span class="nb">cd</span> /homes/abie/nbconvert/; ./nbconvert.py --format reveal E6.ipynb

@@ -4,9 +4,9 @@
 
 <style>
 .state {
-    stroke: #999;
-    stroke-width: 1;
-    fill: white;
+    stroke: white;
+    stroke-width: 2;
+    fill: grey;
 }
 </style>
 
@@ -29,43 +29,14 @@ var svg = d3.select("body")
 // Define default path generator
 var projection = d3.geo.albersUsa()
     .translate([width/2, height/2])
-    .scale([700]);
+    .scale([200]);
 var path = d3.geo.path()
     .projection(projection);
-
-// Add random data
-json.features
-    .forEach(function (d) {
-        d.properties.value = Math.random(); })
-
-// Draw map  FIXME: get the selection grouped or something
-var t = svg.selectAll("path")
+// Draw map
+svg .selectAll("path")
     .data(json.features)
-    .enter();
-t.append("path")
+    .enter()
+  .append("path")
     .attr("d", path)
     .attr("class", "state");
-t.append("circle")
-    .attr("r", 5)
-    .attr("cx", function (d) { return path.centroid(d)[0]; })
-    .attr("cy", function (d) { return path.centroid(d)[1]; });
-
-// Add zoom interaction
-var zoom = d3.behavior.zoom()
-        .translate(projection.translate())
-        .scale(projection.scale())
-        .on("zoom", move);
-d3.select("svg").call(zoom);
-
-function move() {
-    projection
-        .translate(d3.event.translate)
-        .scale(d3.event.scale);
-    svg.selectAll("path").attr("d", path);
-    svg.selectAll("circle")
-        .attr("r", 5)
-        .attr("cx", function (d) { return path.centroid(d)[0]; })
-        .attr("cy", function (d) { return path.centroid(d)[1]; });
-}
-
 </script>
