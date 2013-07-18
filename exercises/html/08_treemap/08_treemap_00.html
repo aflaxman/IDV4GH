@@ -6,10 +6,19 @@
 /* css goes here */
 </style>
 
-<body>
-<p>Tree Map:</p>
-
 <script src="../d3.v3.js"></script>
+<body>
+<p>SVG:</p>
+
 <script>
-// javascript goes here
+var w = 800
+    h = 400,
+    padding = 20,
+    x = d3.scale.linear().range([padding, w-padding]),
+    y = d3.scale.linear().range([h-padding, padding]);
+    
+var svg = d3.select("body")
+  .append("svg")
+    .attr("width", w)
+    .attr("height", h)
 </script>

@@ -57,8 +57,8 @@ cell.append("rect")
     .style("stroke", "black");
 
 cell.append("text")
-    .attr("x", function(d) { return (d.dx + 5*d.depth) / 2; })
-    .attr("y", function(d) { return (d.dy + 5*d.depth) / 2; })
+    .attr("x", function(d) { return d.dx / 2 + 5*d.depth; })
+    .attr("y", function(d) { return d.dy / 2 + 5*d.depth; })
     .attr("dy", ".35em")
     .attr("text-anchor", "middle")
     .text(function(d) { return d.name; })
@@ -103,8 +103,8 @@ function zoom(d) {
       .attr("height", function(d) { return ky * d.dy - 1; })
 
   t.select("text")
-      .attr("x", function(d) { return kx * d.dx / 2; })
-      .attr("y", function(d) { return ky * d.dy / 2; })
+      .attr("x", function(d) { return kx * d.dx / 2 + 5*d.depth; })
+      .attr("y", function(d) { return ky * d.dy / 2 + 5*d.depth; })
       .style("opacity", function(d) { return kx * d.dx > d.w ? 1 : 0; });
 
   node = d;

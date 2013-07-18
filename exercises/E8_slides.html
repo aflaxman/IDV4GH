@@ -1195,23 +1195,238 @@ div.output_prompt {
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1>IDV4GH Exercise 8</h1>
+<h2>Axes</h2>
 <h2>Tree Maps</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Skeleton+</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;meta charset="utf-8"&gt;
+
+&lt;style&gt;
+/* css goes here */
+&lt;/style&gt;
+
+&lt;script src="../d3.v3.js"&gt;&lt;/script&gt;
+&lt;body&gt;
+&lt;p&gt;SVG:&lt;/p&gt;
+
+&lt;script&gt;
+var w = 800
+    h = 400,
+    padding = 20,
+    x = d3.scale.linear().range([padding, w-padding]),
+    y = d3.scale.linear().range([h-padding, padding]);
+
+var svg = d3.select("body")
+  .append("svg")
+    .attr("width", w)
+    .attr("height", h)
+&lt;/script&gt;
+</code></pre>
+<p><a href="html/08_treemap/08_treemap_00.html">show results</a></p>
+</div>
+<div style=display:none class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap_00</span><span class="o">.</span><span class="n">html</span>
+
+<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
+<span class="o">/*</span> <span class="n">css</span> <span class="n">goes</span> <span class="n">here</span> <span class="o">*/</span>
+<span class="o">&lt;/</span><span class="n">style</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;../d3.v3.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">SVG</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="n">var</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">800</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">linear</span><span class="p">()</span><span class="o">.</span><span class="n">range</span><span class="p">([</span><span class="n">padding</span><span class="p">,</span> <span class="n">w</span><span class="o">-</span><span class="n">padding</span><span class="p">]),</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">linear</span><span class="p">()</span><span class="o">.</span><span class="n">range</span><span class="p">([</span><span class="n">h</span><span class="o">-</span><span class="n">padding</span><span class="p">,</span> <span class="n">padding</span><span class="p">]);</span>
+    
+<span class="n">var</span> <span class="n">svg</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>Overwriting html/08_treemap/08_treemap_00.html
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>I put <code>x</code> and <code>y</code> scales in that skeleton (that is the "plus")</h2>
+<ul>
+<li>What are their domain and range?</li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>This adds an x-axis:</h2>
+<pre><code>var xAxis = d3.svg.axis().scale(x);
+var g = svg.append("g")
+    .attr("class", "axis")
+    .call(xAxis);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>But it looks quite bad, and is in a weird place.</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Style it to look better: <code>fill: none</code></h2>
+<pre><code>g.style({stroke: "black", fill: "none"});
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>That detail about anti-aliasing I mentioned yesterday:</h2>
+<pre><code>g.style("shape-rendering", "crispEdges");
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>And how about putting it in the right place?</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>This is not quite right, but it should give you enough to get it right:</h2>
+<pre><code>g.attr("transform", "translate(0,10)");
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>We can even animate moving the axis:</h2>
+<pre><code>g.transition()
+    .duration(2000)
+    .attr("transform",
+        "translate(0," + (h-padding) + ")");
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Can you put a y-axis on as well?</h2>
+<ul>
+<li>Hint: <code>.orient("left")</code></li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre><code>var yAxis = d3.svg.axis()
+    .scale(y).orient("left");
+var g = svg.append("g")
+    .attr("class", "axis")
+    .style({stroke: "black", fill: "none"})
+    .attr("transform",
+         "translate(" + padding + ",0)")
+    .call(yAxis);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>What if I like the axis ticks to go the other direction?</h2>
+<ul>
+<li>See <a href="https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-tickSize"><code>axis.tickSize()</code></a></li>
+</ul>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre><code>yAxis.tickSize(-6,-3,0)
+g.call(yAxis);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>And it would be nice to enclose the whole region in a box sometimes</h2>
+<pre><code>var yAxis = d3.svg.axis()
+    .scale(y).orient("right")
+    .tickSize(-6,-3,0)
+    .tickFormat("");
+var g = svg.append("g")
+    .attr("class", "axis")
+    .style({stroke: "black", fill: "none"})
+    .attr("transform",
+         "translate(" + (w-padding) + ",0)")
+    .call(yAxis);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Is there anything different when using different scales?</h2>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Not really</h2>
+<pre><code>var logScale = d3.scale.log()
+    .range([padding, w-padding]);
+var logAxis = d3.svg.axis()
+    .scale(logScale);
+var g = svg.append("g")
+    .attr("class", "axis")
+    .style({stroke: "black", fill: "none"})
+    .attr("transform",
+         "translate(0,20)")
+    .call(logAxis);
+</code></pre>
+</div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Ordinal scale can be very convenient</h2>
+<pre><code>var oScale = d3.scale.ordinal()
+    .rangeBands([padding, w-padding], .1)
+    .domain(["A", "B", "C", "D"]);
+var oAxis = d3.svg.axis()
+    .scale(oScale);
+var g = svg.append("g")
+    .attr("class", "axis")
+    .style({stroke: "black", fill: "none"})
+    .attr("transform",
+         "translate(0,100)")
+    .call(oAxis);
+</code></pre>
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">mkdir</span> <span class="n">html</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">!</span>rm html/08_treemap/flare.json
 </pre></div>
 
 </div>
@@ -1231,9 +1446,15 @@ div.output_prompt {
 </div>
 </div>
 </div>
+</section>
+<section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Treemap</h2>
+<p><a href="html/08_treemap/08_treemap_01.html">show results</a></p>
+</div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap_01</span><span class="o">.</span><span class="n">html</span>
 
@@ -1361,14 +1582,17 @@ div.output_prompt {
 </div>
 </div>
 </div>
+</section>
+<section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2>Cool alternative style</h2>
+<p><a href="html/08_treemap/08_treemap_02.html">show results</a></p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
+<div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap_01</span><span class="o">.</span><span class="n">html</span>
+<div class="highlight"><pre><span class="o">%%</span><span class="k">file</span> <span class="n">html</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap</span><span class="o">/</span><span class="mi">08</span><span class="n">_treemap_02</span><span class="o">.</span><span class="n">html</span>
 
 <span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span>
@@ -1428,8 +1652,8 @@ div.output_prompt {
     <span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="s">&quot;stroke&quot;</span><span class="p">,</span> <span class="s">&quot;black&quot;</span><span class="p">);</span>
 
 <span class="n">cell</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">dx</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">d</span><span class="o">.</span><span class="n">depth</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
-    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">dy</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">d</span><span class="o">.</span><span class="n">depth</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">d</span><span class="o">.</span><span class="n">depth</span><span class="p">;</span> <span class="p">})</span>
+    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">dy</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">d</span><span class="o">.</span><span class="n">depth</span><span class="p">;</span> <span class="p">})</span>
     <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;dy&quot;</span><span class="p">,</span> <span class="s">&quot;.35em&quot;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;text-anchor&quot;</span><span class="p">,</span> <span class="s">&quot;middle&quot;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">;</span> <span class="p">})</span>
@@ -1474,8 +1698,8 @@ div.output_prompt {
       <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ky</span> <span class="o">*</span> <span class="n">d</span><span class="o">.</span><span class="n">dy</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="p">})</span>
 
   <span class="n">t</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">)</span>
-      <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">kx</span> <span class="o">*</span> <span class="n">d</span><span class="o">.</span><span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
-      <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ky</span> <span class="o">*</span> <span class="n">d</span><span class="o">.</span><span class="n">dy</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
+      <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">kx</span> <span class="o">*</span> <span class="n">d</span><span class="o">.</span><span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">d</span><span class="o">.</span><span class="n">depth</span><span class="p">;</span> <span class="p">})</span>
+      <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ky</span> <span class="o">*</span> <span class="n">d</span><span class="o">.</span><span class="n">dy</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">d</span><span class="o">.</span><span class="n">depth</span><span class="p">;</span> <span class="p">})</span>
       <span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="s">&quot;opacity&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">kx</span> <span class="o">*</span> <span class="n">d</span><span class="o">.</span><span class="n">dx</span> <span class="o">&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">w</span> <span class="err">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">});</span>
 
   <span class="n">node</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
@@ -1492,7 +1716,7 @@ div.output_prompt {
 <div class="hbox output_area">
 <div class="prompt output_prompt"></div>
 <div class="output_subarea output_stream output_stdout">
-<pre>Overwriting html/08_treemap/08_treemap_01.html
+<pre>Overwriting html/08_treemap/08_treemap_02.html
 </pre>
 </div>
 </div>
@@ -1502,11 +1726,11 @@ div.output_prompt {
 </section>
 <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2>Now you know everything</h2>
+<h2>Now you know everything!</h2>
 </div>
 <div style=display:none class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">!</span>cp /homes/abie/notebook/2013_07_06d_IDV4GH_Exercise_08_treemap.ipynb /homes/abie/nbconvert/E8.ipynb
 <span class="o">!</span><span class="nb">cd</span> /homes/abie/nbconvert/; ./nbconvert.py --format reveal E8.ipynb
